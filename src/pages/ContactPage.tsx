@@ -1,38 +1,35 @@
-import { Building2, Mail, MapPin, MessageCircle, Phone, User } from 'lucide-react';
+import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import PageHero from '../components/site/PageHero';
 import Reveal from '../components/site/Reveal';
 import MaskImage from '../components/site/MaskImage';
+import ContactForm from '../components/site/ContactForm';
+import FAQ from '../components/site/FAQ';
 import { CONTACT } from '../data/site';
 
-const CHANNELS = [
+const DETAILS = [
   {
     icon: MessageCircle,
     label: 'WhatsApp',
     value: CONTACT.mobilePhone,
-    hint: 'Fastest response for site enquiries',
     href: CONTACT.whatsappUrl,
     external: true,
-    featured: true,
   },
   {
     icon: Mail,
     label: 'Email',
     value: CONTACT.email,
-    hint: 'Send drawings, BQs and tender documents',
     href: `mailto:${CONTACT.email}`,
   },
   {
     icon: Phone,
     label: 'Office',
     value: CONTACT.officePhone,
-    hint: 'Puncak Alam office, working hours',
     href: CONTACT.officePhoneHref,
   },
   {
     icon: MapPin,
     label: 'Address',
     value: CONTACT.address,
-    hint: 'Open in Google Maps',
     href: CONTACT.mapsUrl,
     external: true,
   },
@@ -50,117 +47,80 @@ export default function ContactPage() {
             <span className="text-aksb-oxidized">Our Commitment.</span>
           </>
         }
-        lede="We are ready to discuss your project and propose the most practical solution — constructing a safer and better tomorrow, one carriageway at a time."
+        lede="Tell us about the road, bridge or surfacing scope you are pricing. We will come back with the most practical method for the site."
       />
 
       <section className="w-full bg-aksb-light">
         <div className="mx-auto max-w-[1280px] px-6 py-20 lg:px-10 lg:py-28">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-            {/* Channels */}
-            <div>
-              <Reveal>
-                <h2 className="font-display text-3xl font-medium uppercase text-aksb-text md:text-4xl">
-                  Speak to the team
-                </h2>
-                <p className="mt-3 max-w-md text-sm font-body leading-relaxed text-aksb-muted">
-                  Road furniture, pavement treatment, civil works or bridge joint scopes — reach us
-                  on whichever channel suits you.
-                </p>
-              </Reveal>
+          <div className="grid grid-cols-1 gap-14 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
+            {/* Enquiry form */}
+            <Reveal>
+              <h2 className="font-display text-3xl font-medium uppercase text-aksb-text md:text-4xl">
+                Start the conversation
+              </h2>
+              <p className="mt-3 max-w-md text-sm font-body leading-relaxed text-aksb-muted">
+                A few details are enough — drawings and BQs can follow by email once we know what
+                we are looking at.
+              </p>
+              <div className="mt-8">
+                <ContactForm />
+              </div>
+            </Reveal>
 
-              <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {CHANNELS.map((ch, i) => (
-                  <Reveal key={ch.label} delay={0.06 * i} className={ch.featured ? 'sm:col-span-2' : ''}>
+            {/* Direct lines + proof */}
+            <div>
+              <Reveal delay={0.1}>
+                <div className="border-t border-aksb-text/10">
+                  {DETAILS.map((d) => (
                     <a
-                      href={ch.href}
-                      target={ch.external ? '_blank' : undefined}
-                      rel={ch.external ? 'noreferrer' : undefined}
-                      className={`group flex h-full items-start gap-4 rounded-xl border p-6 transition-all duration-400 hover:-translate-y-1 ${
-                        ch.featured
-                          ? 'border-aksb-oxidized/30 bg-aksb-oxidized/[0.06] hover:border-aksb-oxidized hover:shadow-[0_16px_36px_rgba(166,75,41,0.18)]'
-                          : 'border-aksb-text/10 bg-white hover:border-aksb-oxidized/40 hover:shadow-[0_14px_30px_rgba(13,13,13,0.08)]'
-                      }`}
+                      key={d.label}
+                      href={d.href}
+                      target={d.external ? '_blank' : undefined}
+                      rel={d.external ? 'noreferrer' : undefined}
+                      className="group flex items-start gap-4 border-b border-aksb-text/10 py-5 transition-colors duration-300"
                     >
-                      <span
-                        className={`flex h-11 w-11 flex-none items-center justify-center rounded-full transition-colors duration-400 ${
-                          ch.featured
-                            ? 'bg-aksb-oxidized text-white'
-                            : 'bg-aksb-oxidized/10 text-aksb-oxidized group-hover:bg-aksb-oxidized group-hover:text-white'
-                        }`}
-                      >
-                        <ch.icon size={18} />
-                      </span>
+                      <d.icon
+                        size={17}
+                        className="mt-0.5 flex-none text-aksb-oxidized transition-transform duration-300 group-hover:-translate-y-0.5"
+                      />
                       <span>
                         <span className="block text-[10px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">
-                          {ch.label}
+                          {d.label}
                         </span>
-                        <span className="mt-1 block text-sm font-body font-semibold leading-snug text-aksb-text">
-                          {ch.value}
-                        </span>
-                        <span className="mt-1 block text-xs font-body text-aksb-muted">
-                          {ch.hint}
+                        <span className="mt-1 block text-sm font-body font-medium leading-relaxed text-aksb-text transition-colors duration-300 group-hover:text-aksb-oxidized">
+                          {d.value}
                         </span>
                       </span>
                     </a>
-                  </Reveal>
-                ))}
-              </div>
+                  ))}
+                </div>
 
-              {/* Company facts */}
-              <Reveal delay={0.2}>
-                <div className="mt-8 grid grid-cols-1 gap-4 rounded-xl border border-aksb-text/10 bg-white p-6 sm:grid-cols-2">
-                  <div className="flex items-center gap-3">
-                    <Building2 size={18} className="flex-none text-aksb-oxidized" />
-                    <div>
-                      <p className="text-[10px] font-body uppercase tracking-[0.15em] text-aksb-muted">
-                        Company Registration
-                      </p>
-                      <p className="text-sm font-body font-semibold text-aksb-text">
-                        {CONTACT.company} ({CONTACT.regNo})
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <User size={18} className="flex-none text-aksb-oxidized" />
-                    <div>
-                      <p className="text-[10px] font-body uppercase tracking-[0.15em] text-aksb-muted">
-                        Contact Person
-                      </p>
-                      <p className="text-sm font-body font-semibold text-aksb-text">
-                        {CONTACT.person}
-                      </p>
-                    </div>
-                  </div>
+                <div className="mt-6 space-y-1.5 text-sm font-body leading-relaxed text-aksb-muted">
+                  <p>
+                    {CONTACT.company} · {CONTACT.regNo}
+                  </p>
+                  <p>Contact person: {CONTACT.person}</p>
+                  <p>CIDB G4 · Bumiputera status · Est. 2018</p>
                 </div>
               </Reveal>
-            </div>
 
-            {/* Visual side */}
-            <div className="flex flex-col gap-4">
-              <MaskImage
-                src="/images/hero1.jpg"
-                alt="AKSB works at golden hour"
-                direction="right"
-                className="h-[240px] rounded-xl sm:h-[300px]"
-              />
-              <div className="grid grid-cols-2 gap-4">
+              <div className="mt-10 grid grid-cols-2 gap-4">
                 <MaskImage
                   src="/images/work-cst.jpg"
                   alt="Colour surface treatment site photo"
                   direction="up"
-                  delay={0.15}
-                  className="h-[150px] rounded-lg sm:h-[190px]"
+                  className="h-[150px] rounded-lg sm:h-[180px]"
                 />
                 <MaskImage
                   src="/images/work-sealant.jpg"
                   alt="Sealant joint application site photo"
                   direction="up"
-                  delay={0.25}
-                  className="h-[150px] rounded-lg sm:h-[190px]"
+                  delay={0.12}
+                  className="h-[150px] rounded-lg sm:h-[180px]"
                 />
               </div>
-              <Reveal delay={0.2}>
-                <div className="rounded-xl bg-aksb-dark p-7">
+              <Reveal delay={0.15}>
+                <div className="mt-4 rounded-xl bg-aksb-dark p-7">
                   <p className="font-display text-xl font-medium uppercase leading-snug text-aksb-light">
                     Building connections.
                     <br />
@@ -175,6 +135,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <FAQ tone="stone" />
     </>
   );
 }

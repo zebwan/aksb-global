@@ -181,6 +181,33 @@ export const STATS = [
   { value: 12, label: 'Clients & authorities', suffix: '+' },
 ] as const;
 
+export const FAQS = [
+  {
+    q: 'What work does AKSB Global actually do?',
+    a: 'Four scopes: road furniture (line marking, signage, studs, flexible posts), pavement treatments (sealant joints, HFST, colour surfacing), civil and structure works (slope protection and fencing), and bridge expansion joints including deck repair. Road maintenance is the whole business, not a side line.',
+  },
+  {
+    q: 'Which areas do you cover?',
+    a: 'We are based in Puncak Alam, Selangor, and work wherever the road takes us — recent projects run from Klang Valley highways like LKSA, SILK, Cheras–Kajang and the Kuang–Sg. Buloh Expressway to the North–South Expressway and federal roads as far south as Kota Tinggi, Johor.',
+  },
+  {
+    q: 'Is AKSB a registered contractor?',
+    a: 'Yes. AKSB Global Sdn Bhd (1287934-H) was established in July 2018 and is a CIDB G4 registered contractor with Bumiputera status.',
+  },
+  {
+    q: 'Do you take packages from main contractors and concessionaires?',
+    a: 'That is most of our order book. Recent clients include PROLINTAS, Grand Saga, LATAR, Edgenta Infrastructure Services and Bina Masyhur under the SELIA Group, alongside councils and public agencies.',
+  },
+  {
+    q: 'Can you supply and install HFST or coloured surfacing?',
+    a: 'Yes. Through our partnership with Omnigrip Direct of Australia we deliver high friction surface treatment for accident-prone stretches and colour surface treatment for bus, cycle and priority lanes, plus the sealant joint works that go with them.',
+  },
+  {
+    q: 'How do I get a quotation?',
+    a: 'Send us the scope, location and any drawings or BQ you have — WhatsApp is fastest, email works too. Our contact person is Amrizal Aziz, and the form below reaches the same inbox.',
+  },
+] as const;
+
 export const CONTACT = {
   company: 'AKSB Global Sdn Bhd',
   regNo: '1287934-H',

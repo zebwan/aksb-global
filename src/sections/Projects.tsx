@@ -102,11 +102,12 @@ export default function Projects() {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20" />
-                  <div className="absolute right-4 top-4 rounded-full bg-aksb-oxidized/90 px-3 py-1">
-                    <span className="text-[10px] font-body font-semibold uppercase tracking-wider text-white">
-                      {project.year}
-                    </span>
-                  </div>
+                  <span
+                    className="absolute right-4 top-3 font-display text-xl font-medium text-aksb-light"
+                    style={{ textShadow: '0 1px 12px rgba(0,0,0,0.7)' }}
+                  >
+                    {project.year}
+                  </span>
                   <div className="absolute bottom-0 left-0 h-1 w-0 bg-aksb-oxidized transition-all duration-500 ease-out group-hover:w-full" />
                 </div>
                 <div className="mt-5 px-1">

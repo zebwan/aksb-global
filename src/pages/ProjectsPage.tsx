@@ -75,28 +75,23 @@ function ProjectStack() {
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
                   <div className="absolute inset-0 bg-aksb-dark/15" />
-                  <div className="absolute left-4 top-4 rounded-full bg-aksb-dark/70 px-3 py-1 backdrop-blur-sm">
-                    <span className="text-[10px] font-body font-semibold uppercase tracking-[0.14em] text-aksb-light">
-                      {project.scope}
-                    </span>
-                  </div>
                 </div>
 
                 <div className="flex flex-col justify-between p-6 md:p-9">
                   <div>
-                    <div className="flex items-baseline justify-between gap-4">
-                      <span className="font-display text-4xl font-medium text-aksb-oxidized md:text-5xl">
-                        {project.year}
-                      </span>
-                      <span
-                        className={`text-right text-[10px] font-body uppercase tracking-[0.15em] ${
-                          dark ? 'text-aksb-light/40' : 'text-aksb-muted'
+                    <div className="flex items-start justify-between gap-6">
+                      <p
+                        className={`pt-2 text-[11px] font-body font-medium uppercase tracking-[0.15em] ${
+                          dark ? 'text-aksb-light/50' : 'text-aksb-muted'
                         }`}
                       >
-                        {String(i + 1).padStart(2, '0')} / {String(PROJECTS.length).padStart(2, '0')}
+                        {project.year} · {project.scope}
+                      </p>
+                      <span className="font-display text-6xl font-medium leading-none text-aksb-oxidized md:text-7xl">
+                        {i + 1}
                       </span>
                     </div>
-                    <h3 className="mt-4 font-display text-2xl font-medium uppercase leading-[1.12] tracking-[0.01em] md:text-3xl">
+                    <h3 className="font-display text-2xl font-medium uppercase leading-[1.12] tracking-[0.01em] md:text-3xl">
                       {project.title}
                     </h3>
                     <p

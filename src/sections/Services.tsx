@@ -21,16 +21,9 @@ function ServiceItem({ service, index }: { service: (typeof SERVICES)[number]; i
         <p className="mt-5 max-w-md text-base font-body leading-relaxed text-aksb-muted">
           {service.description}
         </p>
-        <ul className="mt-6 flex max-w-md flex-wrap gap-2">
-          {service.details.map((detail) => (
-            <li
-              key={detail}
-              className="rounded-full border border-aksb-dark/10 bg-aksb-dark/5 px-3 py-1.5 text-xs font-body font-medium uppercase tracking-wider text-aksb-text/70 transition-colors duration-300 hover:border-aksb-oxidized/40 hover:bg-aksb-oxidized/10"
-            >
-              {detail}
-            </li>
-          ))}
-        </ul>
+        <p className="mt-6 max-w-md border-l-2 border-aksb-oxidized/60 pl-4 text-sm font-body leading-[1.9] text-aksb-text/70">
+          {service.details.join('  ·  ')}
+        </p>
         <Link
           to="/expertise"
           state={{ anchor: service.slug }}

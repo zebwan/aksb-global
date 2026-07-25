@@ -4,6 +4,7 @@ import Services from '../sections/Services';
 import Projects from '../sections/Projects';
 import Partners from '../sections/Partners';
 import Contact from '../sections/Contact';
+import FAQ from '../components/site/FAQ';
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <Projects />
       <Partners />
       <Contact />
+      <FAQ tone="light" />
     </>
   );
 }

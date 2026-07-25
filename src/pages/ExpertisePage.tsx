@@ -93,21 +93,22 @@ export default function ExpertisePage() {
         }
         lede="Comprehensive road maintenance and infrastructure solutions for highways and federal / state roads — the same four scopes since 2018, sharpened project after project."
       >
-        {/* quick anchor nav */}
+        {/* quick anchor nav — plain text, reads like a table of contents */}
         <Reveal delay={0.24}>
-          <div className="mt-10 flex flex-wrap gap-2.5">
-            {SERVICES.map((s, i) => (
+          <div className="mt-12 flex flex-wrap items-baseline gap-x-8 gap-y-3 border-t border-white/10 pt-6">
+            <span className="text-xs font-body text-aksb-light/35">On this page</span>
+            {SERVICES.map((s) => (
               <a
                 key={s.slug}
-                href={`#/expertise`}
+                href="#/expertise"
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById(s.slug)?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="group flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-body font-medium uppercase tracking-[0.12em] text-aksb-light/70 transition-all duration-300 hover:border-aksb-oxidized hover:text-aksb-light"
+                className="group relative text-sm font-body font-medium text-aksb-light/75 transition-colors duration-300 hover:text-aksb-light"
               >
-                <span className="text-aksb-oxidized">0{i + 1}</span>
                 {s.title}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-aksb-oxidized transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </div>
@@ -139,10 +140,7 @@ export default function ExpertisePage() {
             {WHY_AKSB.map((item, i) => (
               <Reveal key={item.title} delay={0.05 * i} className="h-full">
                 <div className="group h-full bg-aksb-dark p-7 transition-colors duration-500 hover:bg-[#151210] md:p-8">
-                  <span className="font-display text-sm font-medium text-aksb-oxidized">
-                    0{i + 1}
-                  </span>
-                  <h3 className="mt-3 font-display text-xl font-medium uppercase tracking-[0.02em] text-aksb-light">
+                  <h3 className="font-display text-xl font-medium uppercase tracking-[0.02em] text-aksb-light">
                     {item.title}
                   </h3>
                   <p className="mt-3 text-sm font-body leading-relaxed text-aksb-light/50 transition-colors duration-500 group-hover:text-aksb-light/70">
