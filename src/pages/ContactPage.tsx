@@ -106,13 +106,13 @@ export default function ContactPage() {
 
               <div className="mt-10 grid grid-cols-2 gap-4">
                 <MaskImage
-                  src="/images/work-cst.jpg"
+                  src="./images/work-cst.jpg"
                   alt="Colour surface treatment site photo"
                   direction="up"
                   className="h-[150px] rounded-lg sm:h-[180px]"
                 />
                 <MaskImage
-                  src="/images/work-sealant.jpg"
+                  src="./images/work-sealant.jpg"
                   alt="Sealant joint application site photo"
                   direction="up"
                   delay={0.12}

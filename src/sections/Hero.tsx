@@ -4,40 +4,40 @@ import { ArrowUpRight } from 'lucide-react';
 
 const HERO_TILES = [
   {
-    src: '/images/hero1.jpg',
+    src: './images/hero1.jpg',
     label: 'Highway Projects',
     caption: 'Live works for concessionaires',
     to: '/projects',
   },
   {
-    src: '/images/hero2.jpg',
+    src: './images/hero2.jpg',
     label: 'Bridge Expansion Joints',
     caption: 'Supply, replace & repair',
     to: '/expertise',
     anchor: 'bridge-expansion-joint',
   },
   {
-    src: '/images/hero3.jpg',
+    src: './images/hero3.jpg',
     label: 'Colour Surface Treatment',
     caption: 'CST for lanes that need reading',
     to: '/expertise',
     anchor: 'pavement',
   },
   {
-    src: '/images/hero4.jpg',
+    src: './images/hero4.jpg',
     label: 'Technology Partners',
     caption: 'HFST with Omnigrip Direct',
     to: '/partners',
   },
   {
-    src: '/images/hero5.jpg',
+    src: './images/hero5.jpg',
     label: 'Civil & Structure',
     caption: 'Slope protection & fencing',
     to: '/expertise',
     anchor: 'civil-structure',
   },
   {
-    src: '/images/hero6.jpg',
+    src: './images/hero6.jpg',
     label: 'Road Furniture',
     caption: 'Marking, signage & studs',
     to: '/expertise',

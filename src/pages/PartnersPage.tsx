@@ -122,7 +122,7 @@ export default function PartnersPage() {
       {/* Closing image + CTA */}
       <section className="relative w-full overflow-hidden bg-aksb-dark">
         <MaskImage
-          src="/images/hero1.jpg"
+          src="./images/hero1.jpg"
           alt="AKSB highway works at dusk"
           direction="up"
           className="h-[320px] w-full md:h-[420px]"

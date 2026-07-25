@@ -6,7 +6,7 @@ export const SERVICES = [
     description:
       'Road line marking in All Weather Thermoplastic, Normal Thermoplastic and Rumble Strips, alongside signage supply and installation, flasher lights, road studs and flexible posts.',
     details: ['Road Line Marking', 'Signage Supply & Install', 'Flasher Light', 'Road Stud', 'Flexible Post', 'Rumble Strips'],
-    image: '/images/hero6.jpg',
+    image: './images/hero6.jpg',
     body: 'Every scope that guides and protects the road user. AKSB crews handle thermoplastic line marking for highways and federal routes, supply and erect signage, and install the studs, posts and flashers that keep traffic reading the road correctly at night and in rain.',
   },
   {
@@ -16,8 +16,8 @@ export const SERVICES = [
     description:
       'Sealant joint application, High Friction Surface Treatment (HFST) and Colour Surface Treatment (CST), delivered with technology partner Omnigrip Direct of Australia.',
     details: ['Sealant Joint', 'High Friction Surface Treatment', 'Colour Surface Treatment'],
-    image: '/images/hero3.jpg',
-    gallery: ['/images/work-cst.jpg', '/images/hero4.jpg'],
+    image: './images/hero3.jpg',
+    gallery: ['./images/work-cst.jpg', './images/hero4.jpg'],
     body: 'Skid resistance is a safety outcome, not a finish. Through the Omnigrip Direct partnership AKSB applies HFST at accident-prone bends and approaches, lays CST for bus and cycle lanes, and seals pavement joints before water gets a chance to work.',
   },
   {
@@ -27,8 +27,8 @@ export const SERVICES = [
     description:
       'Slope protection, fencing and concrete wall fencing, delivered by technically equipped personnel analysing the most practical solution for each site.',
     details: ['Slope Protection', 'Fencing', 'Wall Fencing'],
-    image: '/images/hero5.jpg',
-    gallery: ['/images/work-gabion.jpg'],
+    image: './images/hero5.jpg',
+    gallery: ['./images/work-gabion.jpg'],
     body: 'From gabion walls holding a cut slope to boundary fencing along an alignment, the civil team surveys the ground condition first and proposes the method that will actually last through Malaysian monsoon seasons.',
   },
   {
@@ -38,8 +38,8 @@ export const SERVICES = [
     description:
       'Asphaltic plug joints, elastomeric joints, sealant joints and bridge deck repair works across highways and federal roads in Malaysia.',
     details: ['Asphaltic Plug Joint', 'Elastomeric Joint', 'Sealant Joint', 'Bridge Deck Repair'],
-    image: '/images/hero2.jpg',
-    gallery: ['/images/work-joint.jpg', '/images/work-sealant.jpg'],
+    image: './images/hero2.jpg',
+    gallery: ['./images/work-joint.jpg', './images/work-sealant.jpg'],
     body: 'Bridge joints take the daily hammering of every axle that crosses. AKSB supplies and replaces damaged elastomeric and asphaltic plug joints for concessionaires including PROLINTAS, Grand Saga and LATAR, and repairs the deck around them so the fix holds.',
   },
 ] as const;
@@ -51,7 +51,7 @@ export const PROJECTS = [
     client: 'PROLINTAS (LKSA)',
     scope: 'Bridge Expansion Joint',
     desc: 'Supply and replace damaged elastomeric bridge joints at various locations along the highway (Jabor – Gerik).',
-    image: '/images/hero2.jpg',
+    image: './images/hero2.jpg',
   },
   {
     year: '2025',
@@ -59,7 +59,7 @@ export const PROJECTS = [
     client: 'Grand Saga Sdn Bhd',
     scope: 'Bridge Expansion Joint',
     desc: 'Rectification works of damaged bridge joints along the Cheras–Kajang Highway concession.',
-    image: '/images/hero1.jpg',
+    image: './images/hero1.jpg',
   },
   {
     year: '2025',
@@ -67,7 +67,7 @@ export const PROJECTS = [
     client: 'LATAR Highway',
     scope: 'Bridge Expansion Joint',
     desc: 'Proposed repair of existing bridge joints at Kuang–Sg. Buloh Expressway (KSE) for year 2025.',
-    image: '/images/hero4.jpg',
+    image: './images/hero4.jpg',
   },
   {
     year: '2025',
@@ -75,7 +75,7 @@ export const PROJECTS = [
     client: 'Bina Masyhur Sdn Bhd (SELIA Group)',
     scope: 'Bridge Works',
     desc: 'Kerja-kerja membaikpulih expansion joint dan kerja-kerja berkaitan penyelenggaraan jambatan 2025.',
-    image: '/images/hero5.jpg',
+    image: './images/hero5.jpg',
   },
   {
     year: '2025',
@@ -83,7 +83,7 @@ export const PROJECTS = [
     client: 'Bina Masyhur Sdn Bhd (SELIA Group)',
     scope: 'Road Furniture',
     desc: 'Expansion joint and road marking works at FT 1416 Sec 3.00 – 4.00, Jalan Felda Inas, Kota Tinggi, Johor.',
-    image: '/images/hero3.jpg',
+    image: './images/hero3.jpg',
   },
   {
     year: '2025',
@@ -91,7 +91,7 @@ export const PROJECTS = [
     client: 'Edgenta Infrastructure Services (EIS + PLUS)',
     scope: 'Bridge Expansion Joint',
     desc: 'Bridge joint repair works for Nilai Railway Overpass Bridge at KM280.50 and Nilai Overpass Bridge at KM280.60 south bound.',
-    image: '/images/hero6.jpg',
+    image: './images/hero6.jpg',
   },
   {
     year: '2024',
@@ -99,7 +99,7 @@ export const PROJECTS = [
     client: 'Edgenta Infrastructure Services (EIS + PLUS)',
     scope: 'Bridge Expansion Joint',
     desc: 'Bridge joint repair works at KM132.40 and KM133.80 both bound, Section S3, North–South Expressway.',
-    image: '/images/hero1.jpg',
+    image: './images/hero1.jpg',
   },
   {
     year: '2024',
@@ -107,7 +107,7 @@ export const PROJECTS = [
     client: 'PROLINTAS (SILK)',
     scope: 'Bridge Expansion Joint',
     desc: 'Repair of damaged bridge expansion joints at various locations along the Kajang SILK Highway.',
-    image: '/images/hero2.jpg',
+    image: './images/hero2.jpg',
   },
 ] as const;
 
