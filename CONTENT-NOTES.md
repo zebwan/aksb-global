@@ -1,5 +1,9 @@
 # AKSB Global — content & asset notes
 
+> **Stack note (20 Aug 2026):** the site was converted from a React/Vite app to plain
+> static HTML/CSS/JS, looks and behaviour unchanged. All copy now lives directly in
+> `index.html`. The React source is in git history before the "static conversion" commit.
+
 Updated 19 August 2026, from the client asset pack
 `AKSB Global (website assets)-20260819T121642Z-1-001.zip`.
 

@@ -9,9 +9,1474 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/site.css" />
+    <link rel="stylesheet" href="./assets/custom.css" />
+    <script>document.documentElement.classList.add('js');</script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="relative">
+
+      <!-- ============ Navigation ============ -->
+      <header data-nav class="fixed left-0 right-0 top-0 z-50 transition-all duration-500 bg-transparent">
+        <div class="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 lg:h-20 lg:px-10">
+          <button data-top class="group relative z-50 flex items-center" aria-label="AKSB Global — back to top">
+            <img src="./images/logo-aksb-light.png" alt="AKSB Global" class="h-8 w-auto transition-transform duration-500 group-hover:scale-[1.04] lg:h-9" />
+          </button>
+
+          <!-- Desktop nav -->
+          <nav class="hidden items-center gap-8 md:flex">
+            <button data-goto="about" data-navlink class="group relative text-xs font-body font-medium uppercase tracking-[0.12em] transition-colors duration-300 text-aksb-light/70 hover:text-aksb-light">
+              About
+              <span data-underline class="absolute -bottom-1 left-0 h-px bg-aksb-oxidized transition-all duration-300 w-0 group-hover:w-full"></span>
+            </button>
+            <button data-goto="expertise" data-navlink class="group relative text-xs font-body font-medium uppercase tracking-[0.12em] transition-colors duration-300 text-aksb-light/70 hover:text-aksb-light">
+              Expertise
+              <span data-underline class="absolute -bottom-1 left-0 h-px bg-aksb-oxidized transition-all duration-300 w-0 group-hover:w-full"></span>
+            </button>
+            <button data-goto="projects" data-navlink class="group relative text-xs font-body font-medium uppercase tracking-[0.12em] transition-colors duration-300 text-aksb-light/70 hover:text-aksb-light">
+              Projects
+              <span data-underline class="absolute -bottom-1 left-0 h-px bg-aksb-oxidized transition-all duration-300 w-0 group-hover:w-full"></span>
+            </button>
+            <button data-goto="partners" data-navlink class="group relative text-xs font-body font-medium uppercase tracking-[0.12em] transition-colors duration-300 text-aksb-light/70 hover:text-aksb-light">
+              Partners
+              <span data-underline class="absolute -bottom-1 left-0 h-px bg-aksb-oxidized transition-all duration-300 w-0 group-hover:w-full"></span>
+            </button>
+            <button data-goto="contact" data-navlink class="group relative text-xs font-body font-medium uppercase tracking-[0.12em] transition-colors duration-300 text-aksb-light/70 hover:text-aksb-light">
+              Contact
+              <span data-underline class="absolute -bottom-1 left-0 h-px bg-aksb-oxidized transition-all duration-300 w-0 group-hover:w-full"></span>
+            </button>
+          </nav>
+
+          <!-- Mobile menu button -->
+          <button data-menu-btn class="relative z-50 p-2 text-aksb-light md:hidden" aria-label="Toggle menu" aria-expanded="false">
+            <svg data-icon-menu xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+            <svg data-icon-x xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x hidden"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile overlay -->
+      <div data-mobile-overlay class="fixed inset-0 z-40 bg-aksb-dark/95 backdrop-blur-xl transition-all duration-500 md:hidden pointer-events-none opacity-0">
+        <nav class="flex h-full flex-col items-center justify-center gap-8">
+          <button data-goto="about" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized" style="--d:0s">About</button>
+          <button data-goto="expertise" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized" style="--d:0.08s">Expertise</button>
+          <button data-goto="projects" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized" style="--d:0.16s">Projects</button>
+          <button data-goto="partners" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized" style="--d:0.24s">Partners</button>
+          <button data-goto="contact" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized" style="--d:0.32s">Contact</button>
+          <a href="https://wa.me/60193665892" target="_blank" rel="noreferrer" class="mob-item mt-4 rounded-full border border-aksb-oxidized/50 px-6 py-2.5 text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-oxidized" style="--d:0.4s">WhatsApp Us</a>
+        </nav>
+      </div>
+
+      <main>
+
+        <!-- ============ Hero ============ -->
+        <section data-hero class="relative flex w-full flex-col overflow-hidden bg-aksb-dark md:min-h-[100dvh] md:items-center md:justify-center">
+          <!-- Desktop: clickable image grid as full-bleed background -->
+          <div data-tilegrid class="absolute inset-0 hidden grid-cols-3 gap-1 p-1 md:grid">
+            <button data-goto="surface-treatment" data-tile aria-label="Colour Surface Treatment" style="--td:0s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/cst-bus-lane.jpg" alt="Colour Surface Treatment" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Colour Surface Treatment</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Bus, cycle &amp; priority lanes</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+            <button data-goto="bridge-expansion-joint" data-tile aria-label="Bridge Expansion Joints" style="--td:0.1s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/joint-elastomeric.jpg" alt="Bridge Expansion Joints" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Bridge Expansion Joints</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Supply, replace &amp; deck repair</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+            <button data-goto="surface-treatment" data-tile aria-label="Anti-Skid Surfacing" style="--td:0.2s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/hfst-roundabout.jpg" alt="Anti-Skid Surfacing" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Anti-Skid Surfacing</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Friction in excess of SRV 70</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+            <button data-goto="crack-repair" data-tile aria-label="Road Crack Repair" style="--td:0.3s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/crack-roadflex.jpg" alt="Road Crack Repair" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Road Crack Repair</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Roadflex H &amp; Techscreed</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+            <button data-goto="projects" data-tile aria-label="Highway Projects" style="--td:0.4s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/joint-asphaltic-plug.jpg" alt="Highway Projects" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Highway Projects</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Live works for concessionaires</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+            <button data-goto="partners" data-tile aria-label="Technology Partners" style="--td:0.5s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/cst-carriageway.jpg" alt="Technology Partners" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Technology Partners</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Surfacing systems from Australia &amp; the UK</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <!-- Hero text — overlays the grid on desktop, flows above it on mobile -->
+          <div class="pointer-events-none relative z-10 mx-auto max-w-4xl px-6 pt-32 text-center md:pt-0">
+            <p data-hf style="--dur:0.8s;--ease:ease;--d:0.3s;--y:20px;text-shadow:0 1px 12px rgba(0,0,0,0.7)" class="mb-4 text-xs font-body font-medium uppercase tracking-[0.2em] text-aksb-oxidized md:mb-6 md:text-sm">
+              Building Malaysia's Infrastructure
+            </p>
+            <h1 data-hf style="--dur:1s;--ease:cubic-bezier(0.16, 1, 0.3, 1);--d:0.5s;--y:30px;text-shadow:0 2px 20px rgba(0,0,0,0.6), 0 0 40px rgba(0,0,0,0.3)" class="font-display text-5xl font-medium uppercase leading-[1.05] tracking-[0.02em] text-aksb-light sm:text-6xl md:text-7xl lg:text-8xl">
+              Precision
+              <br />
+              Engineering
+            </h1>
+            <h2 data-hf style="--dur:1s;--ease:cubic-bezier(0.16, 1, 0.3, 1);--d:0.7s;--y:30px;text-shadow:0 2px 15px rgba(0,0,0,0.5)" class="mt-1 font-display text-4xl font-medium uppercase leading-[1.05] tracking-[0.02em] text-aksb-light/50 sm:text-5xl md:mt-2 md:text-6xl lg:text-7xl">
+              Lasting Impact
+            </h2>
+            <p data-hf style="--dur:0.8s;--ease:ease;--d:0.9s;--y:20px;text-shadow:0 1px 10px rgba(0,0,0,0.7)" class="mx-auto mt-5 max-w-lg text-sm font-body leading-relaxed text-aksb-light/60 md:mt-8 md:text-base">
+              Road furniture, bridge expansion joints &amp; road safety surfacing since 2018
+            </p>
+            <div data-hf style="--dur:0.8s;--ease:ease;--d:1.05s;--y:20px" class="pointer-events-auto mt-7 inline-flex md:mt-8">
+              <button data-goto="contact" class="group inline-flex items-center gap-2 rounded-full border border-aksb-light/25 bg-aksb-dark/40 px-6 py-3 text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-light backdrop-blur-sm transition-all duration-400 hover:border-aksb-oxidized hover:bg-aksb-oxidized">
+                Start a project
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right transition-transform duration-400 group-hover:rotate-45"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile: tappable tile grid flows below the text -->
+          <div data-tilegrid class="relative z-10 mt-9 grid grid-cols-2 gap-1.5 px-1.5 pb-14 md:hidden">
+            <button data-goto="surface-treatment" data-tile aria-label="Colour Surface Treatment" style="--td:0s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/cst-bus-lane.jpg" alt="Colour Surface Treatment" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Colour Surface Treatment</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Bus, cycle &amp; priority lanes</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+            <button data-goto="bridge-expansion-joint" data-tile aria-label="Bridge Expansion Joints" style="--td:0.1s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/joint-elastomeric.jpg" alt="Bridge Expansion Joints" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Bridge Expansion Joints</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Supply, replace &amp; deck repair</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+            <button data-goto="surface-treatment" data-tile aria-label="Anti-Skid Surfacing" style="--td:0.2s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/hfst-roundabout.jpg" alt="Anti-Skid Surfacing" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Anti-Skid Surfacing</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Friction in excess of SRV 70</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+            <button data-goto="crack-repair" data-tile aria-label="Road Crack Repair" style="--td:0.3s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/crack-roadflex.jpg" alt="Road Crack Repair" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Road Crack Repair</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Roadflex H &amp; Techscreed</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+            <button data-goto="projects" data-tile aria-label="Highway Projects" style="--td:0.4s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/joint-asphaltic-plug.jpg" alt="Highway Projects" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Highway Projects</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Live works for concessionaires</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+            <button data-goto="partners" data-tile aria-label="Technology Partners" style="--td:0.5s" class="hero-tile group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full">
+              <img src="./images/cst-carriageway.jpg" alt="Technology Partners" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="eager" />
+              <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+              <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-aksb-dark/80 to-transparent md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 50%, rgba(0,0,0,0.25) 100%)"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 md:translate-y-2 md:p-4 md:opacity-0 md:transition-all md:duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                <div class="flex items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-body font-semibold uppercase leading-tight tracking-[0.13em] text-aksb-light md:text-xs">Technology Partners</p>
+                    <p class="mt-0.5 hidden text-[11px] font-body text-aksb-light/60 md:block">Surfacing systems from Australia &amp; the UK</p>
+                  </div>
+                  <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-aksb-oxidized/90 text-aksb-light transition-transform duration-500 group-hover:rotate-45 md:h-8 md:w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <!-- Scroll indicator — desktop only (the mobile hero ends at the grid) -->
+          <div data-hf-o style="--dur:1s;--ease:ease;--d:1.2s" class="pointer-events-none absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex">
+            <span class="text-[10px] font-body uppercase tracking-[0.2em] text-aksb-light/40">
+              Scroll
+            </span>
+            <div class="relative h-8 w-px overflow-hidden bg-aksb-light/20">
+              <div class="absolute left-0 top-0 w-full bg-aksb-oxidized" style="height:40%;animation:scrollPulse 2s ease-in-out infinite"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ About ============ -->
+        <section id="about" data-about class="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden scroll-mt-16">
+          <!-- Dawn sky - pure CSS, GPU-accelerated -->
+          <div data-sky class="absolute inset-0 transition-colors duration-1000" style="background:linear-gradient(to bottom, rgb(1, 1, 2) 0%, rgb(5, 5, 7) 40%, rgb(8, 4, 5) 70%, rgb(3, 2, 3) 100%)"></div>
+
+          <!-- Sun -->
+          <div data-sun class="absolute rounded-full pointer-events-none" style="width:80px;height:80px;left:50%;top:45%;transform:translate(-50%, -50%);background:radial-gradient(circle, rgba(255, 255, 150, 0) 0%, rgba(255, 150, 100, 0) 40%, transparent 70%);opacity:0;transition:opacity 0.3s ease"></div>
+
+          <!-- Fog layer -->
+          <div data-fog class="absolute bottom-0 left-0 right-0 pointer-events-none" style="height:45%;background:linear-gradient(to top, rgba(210, 190, 165, 0) 0%, rgba(180, 160, 140, 0) 40%, transparent 100%);transition:all 0.5s ease"></div>
+
+          <!-- Noise texture overlay - subtle -->
+          <div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);background-size:128px 128px"></div>
+
+          <!-- Content -->
+          <div data-about-text class="relative z-10 max-w-3xl mx-auto px-6 text-center" style="opacity:0;transform:translateY(30px);transition:opacity 0.2s ease-out">
+            <p class="text-xs font-body font-medium uppercase tracking-[0.2em] text-aksb-oxidized mb-6">
+              About Us
+            </p>
+            <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.15] tracking-[0.01em] text-aksb-light" style="text-shadow:0 2px 20px rgba(0,0,0,0.6)">
+              We specialize in the critical details of national infrastructure
+            </h2>
+            <p class="mt-6 text-base md:text-lg font-body text-aksb-light/70 leading-relaxed max-w-2xl mx-auto" style="text-shadow:0 1px 10px rgba(0,0,0,0.5)">
+              Incorporated in July 2018 in Selangor as a CIDB-registered, Bumiputera-status company,
+              AKSB Global has built a reputation for quality workmanship, technical competence and
+              timely delivery with leading highway concessionaires and local authorities. Strategic
+              partnerships in Australia and the UK bring proven technologies and continuous knowledge
+              transfer into every scope we deliver.
+            </p>
+          </div>
+        </section>
+
+        <!-- ============ Expertise ============ -->
+        <section id="expertise" class="relative w-full scroll-mt-16 bg-aksb-light">
+          <div class="mx-auto max-w-[1280px] px-6 lg:px-10">
+            <div data-reveal class="pt-24 lg:pt-32">
+              <p class="mb-4 text-xs font-body font-medium uppercase tracking-[0.2em] text-aksb-oxidized">
+                Core Business
+              </p>
+              <h2 class="font-display text-4xl font-medium uppercase leading-[1.1] tracking-[0.01em] text-aksb-text md:text-5xl lg:text-6xl">
+                Five Scopes, Done Properly
+              </h2>
+              <p class="mt-4 max-w-xl text-base font-body leading-relaxed text-aksb-muted">
+                Comprehensive road maintenance and infrastructure solutions for highways and federal /
+                state roads. Five scopes, sharpened project after project since 2018.
+              </p>
+            </div>
+
+            <!-- quick anchor nav — plain text, reads like a table of contents -->
+            <div data-reveal style="--d:0.16s">
+              <div class="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-3 border-t border-aksb-text/10 pt-6">
+                <span class="text-xs font-body text-aksb-muted/70">On this page</span>
+                <button data-goto="road-furniture" class="group relative text-sm font-body font-medium text-aksb-text/75 transition-colors duration-300 hover:text-aksb-text">
+                  Road Furniture
+                  <span class="absolute -bottom-1 left-0 h-px w-0 bg-aksb-oxidized transition-all duration-300 group-hover:w-full"></span>
+                </button>
+                <button data-goto="surface-treatment" class="group relative text-sm font-body font-medium text-aksb-text/75 transition-colors duration-300 hover:text-aksb-text">
+                  Surface Treatment &amp; Anti-Skid
+                  <span class="absolute -bottom-1 left-0 h-px w-0 bg-aksb-oxidized transition-all duration-300 group-hover:w-full"></span>
+                </button>
+                <button data-goto="civil-structure" class="group relative text-sm font-body font-medium text-aksb-text/75 transition-colors duration-300 hover:text-aksb-text">
+                  Civil &amp; Structure
+                  <span class="absolute -bottom-1 left-0 h-px w-0 bg-aksb-oxidized transition-all duration-300 group-hover:w-full"></span>
+                </button>
+                <button data-goto="bridge-expansion-joint" class="group relative text-sm font-body font-medium text-aksb-text/75 transition-colors duration-300 hover:text-aksb-text">
+                  Bridge Expansion Joint
+                  <span class="absolute -bottom-1 left-0 h-px w-0 bg-aksb-oxidized transition-all duration-300 group-hover:w-full"></span>
+                </button>
+                <button data-goto="crack-repair" class="group relative text-sm font-body font-medium text-aksb-text/75 transition-colors duration-300 hover:text-aksb-text">
+                  Road Crack Repair System
+                  <span class="absolute -bottom-1 left-0 h-px w-0 bg-aksb-oxidized transition-all duration-300 group-hover:w-full"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="pb-20 lg:pb-28">
+
+              <!-- 01 Road Furniture (no photo yet — see CONTENT-NOTES) -->
+              <div id="road-furniture" class="scroll-mt-24 border-t border-aksb-text/10 py-16 lg:py-24">
+                <div class="grid grid-cols-1 gap-10 lg:gap-16">
+                  <div>
+                    <div data-reveal>
+                      <p class="mb-3 text-xs font-body font-medium uppercase tracking-[0.15em] text-aksb-oxidized">
+                        01 / Markings, signage and safety fixtures
+                      </p>
+                    </div>
+                    <h3 data-blur-title class="font-display text-4xl font-medium uppercase leading-[1.08] tracking-[0.02em] text-aksb-text md:text-5xl">Road Furniture</h3>
+                    <div data-reveal style="--d:0.08s">
+                      <div class="grid gap-x-16 lg:grid-cols-2">
+                        <p class="mt-5 max-w-lg text-base font-body leading-relaxed text-aksb-muted">Highly reflective, high-durability road visual management items, built and configured to strict JKR highway structural safety criteria. Line marking uses premium retroreflective thermoplastic conforming to JKR / LLM specifications; rumble strips give drivers a tactile warning before high-hazard spots; signage covers directional, warning and regulatory highway signs in high-intensity sheeting; and road studs and flexible posts are heavy-duty glass and high-elastic impact assemblies.</p>
+                        <ul class="mt-7 max-w-lg divide-y divide-aksb-text/10 border-y border-aksb-text/10">
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Road Line Marking</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">All Weather Thermoplastic</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Rumble Strips</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Signage Supply &amp; Install</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Road Stud</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Flexible Post</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hidden"></div>
+                </div>
+              </div>
+
+              <!-- 02 Surface Treatment & Anti-Skid -->
+              <div id="surface-treatment" class="scroll-mt-24 border-t border-aksb-text/10 py-16 lg:py-24">
+                <div class="grid grid-cols-1 gap-10 lg:gap-16 lg:grid-cols-[1fr_1.1fr]">
+                  <div class="lg:order-2">
+                    <div data-reveal>
+                      <p class="mb-3 text-xs font-body font-medium uppercase tracking-[0.15em] text-aksb-oxidized">
+                        02 / Grip, colour and asphalt longevity
+                      </p>
+                    </div>
+                    <h3 data-blur-title class="font-display text-4xl font-medium uppercase leading-[1.08] tracking-[0.02em] text-aksb-text md:text-5xl">Surface Treatment &amp; Anti-Skid</h3>
+                    <div data-reveal style="--d:0.08s">
+                      <div>
+                        <p class="mt-5 max-w-lg text-base font-body leading-relaxed text-aksb-muted">HFST is a specialist veneer overlay for concrete and asphalt roads and highways, providing and maintaining a level of surface friction in excess of SRV 70 that traditional road surfacing materials cannot reach. CST is a durable, skid-resistant coloured surfacing system of thermosetting resin compound, suited to bus lanes, pedestrian crossings and parking delineators. Reclamite is a highly-penetrative liquid emulsion that restabilises the binder, delaying asphalt ageing and pothole occurrence.</p>
+                        <ul class="mt-7 max-w-lg divide-y divide-aksb-text/10 border-y border-aksb-text/10">
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">High Friction Surface Treatment (HFST)</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Colour Surface Treatment (CST)</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Reclamite</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:order-1">
+                    <div data-mask data-dir="right" class="h-[260px] rounded-xl sm:h-[340px] lg:h-[400px]">
+                      <div class="mask-clip h-full w-full overflow-hidden rounded-[inherit]">
+                        <img src="./images/hfst-roundabout.jpg" alt="Surface Treatment &amp; Anti-Skid" loading="lazy" class="h-full w-full object-cover" />
+                      </div>
+                    </div>
+                    <div class="mt-4 grid gap-4 grid-cols-2">
+                      <div data-mask data-dir="up" style="--d:0.15s" class="h-[150px] rounded-lg sm:h-[190px]">
+                        <div class="mask-clip h-full w-full overflow-hidden rounded-[inherit]">
+                          <img src="./images/cst-bus-lane.jpg" alt="Surface Treatment &amp; Anti-Skid — site photo" loading="lazy" class="h-full w-full object-cover" />
+                        </div>
+                      </div>
+                      <div data-mask data-dir="up" style="--d:0.27s" class="h-[150px] rounded-lg sm:h-[190px]">
+                        <div class="mask-clip h-full w-full overflow-hidden rounded-[inherit]">
+                          <img src="./images/cst-walkway.jpg" alt="Surface Treatment &amp; Anti-Skid — site photo" loading="lazy" class="h-full w-full object-cover" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 03 Civil & Structure (no photo yet — see CONTENT-NOTES) -->
+              <div id="civil-structure" class="scroll-mt-24 border-t border-aksb-text/10 py-16 lg:py-24">
+                <div class="grid grid-cols-1 gap-10 lg:gap-16">
+                  <div>
+                    <div data-reveal>
+                      <p class="mb-3 text-xs font-body font-medium uppercase tracking-[0.15em] text-aksb-oxidized">
+                        03 / Slope protection and fencing
+                      </p>
+                    </div>
+                    <h3 data-blur-title class="font-display text-4xl font-medium uppercase leading-[1.08] tracking-[0.02em] text-aksb-text md:text-5xl">Civil &amp; Structure</h3>
+                    <div data-reveal style="--d:0.08s">
+                      <div class="grid gap-x-16 lg:grid-cols-2">
+                        <p class="mt-5 max-w-lg text-base font-body leading-relaxed text-aksb-muted">From gabion walls holding a cut slope to boundary fencing along an alignment, the civil team surveys the ground condition first and proposes the method that will actually last through Malaysian monsoon seasons.</p>
+                        <ul class="mt-7 max-w-lg divide-y divide-aksb-text/10 border-y border-aksb-text/10">
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Slope Protection</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Fencing</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Wall Fencing</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hidden"></div>
+                </div>
+              </div>
+
+              <!-- 04 Bridge Expansion Joint -->
+              <div id="bridge-expansion-joint" class="scroll-mt-24 border-t border-aksb-text/10 py-16 lg:py-24">
+                <div class="grid grid-cols-1 gap-10 lg:gap-16 lg:grid-cols-[1fr_1.1fr]">
+                  <div class="lg:order-2">
+                    <div data-reveal>
+                      <p class="mb-3 text-xs font-body font-medium uppercase tracking-[0.15em] text-aksb-oxidized">
+                        04 / Joint supply, replacement and deck repair
+                      </p>
+                    </div>
+                    <h3 data-blur-title class="font-display text-4xl font-medium uppercase leading-[1.08] tracking-[0.02em] text-aksb-text md:text-5xl">Bridge Expansion Joint</h3>
+                    <div data-reveal style="--d:0.08s">
+                      <div>
+                        <p class="mt-5 max-w-lg text-base font-body leading-relaxed text-aksb-muted">Bridge joints take the daily hammering of every axle that crosses. Asphaltic plug joints use a flexible polymer-modified binder designed for small to medium range bridge movement; elastomeric rubber joints are steel-reinforced vulcanised chloroprene profiles that absorb high impact shear movements. AKSB supplies and replaces damaged joints for concessionaires including PROLINTAS, Grand Saga and LATAR, and repairs the deck around them so the fix holds.</p>
+                        <ul class="mt-7 max-w-lg divide-y divide-aksb-text/10 border-y border-aksb-text/10">
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Asphaltic Plug Joint</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Elastomeric Joint</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Sealant Joint</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Bridge Deck Repair</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:order-1">
+                    <div data-mask data-dir="right" class="h-[260px] rounded-xl sm:h-[340px] lg:h-[400px]">
+                      <div class="mask-clip h-full w-full overflow-hidden rounded-[inherit]">
+                        <img src="./images/joint-elastomeric.jpg" alt="Bridge Expansion Joint" loading="lazy" class="h-full w-full object-cover" />
+                      </div>
+                    </div>
+                    <div class="mt-4 grid gap-4 grid-cols-[1.4fr_1fr]">
+                      <div data-mask data-dir="up" style="--d:0.15s" class="h-[150px] rounded-lg sm:h-[190px]">
+                        <div class="mask-clip h-full w-full overflow-hidden rounded-[inherit]">
+                          <img src="./images/joint-asphaltic-plug.jpg" alt="Bridge Expansion Joint — site photo" loading="lazy" class="h-full w-full object-cover" />
+                        </div>
+                      </div>
+                      <div class="flex items-center rounded-lg border border-aksb-text/10 bg-white/60 p-5">
+                        <p class="text-xs font-body leading-relaxed text-aksb-muted">
+                          Actual AKSB site work — photographed on a live carriageway.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 05 Road Crack Repair System -->
+              <div id="crack-repair" class="scroll-mt-24 border-t border-aksb-text/10 py-16 lg:py-24">
+                <div class="grid grid-cols-1 gap-10 lg:gap-16 lg:grid-cols-[1fr_1.1fr]">
+                  <div>
+                    <div data-reveal>
+                      <p class="mb-3 text-xs font-body font-medium uppercase tracking-[0.15em] text-aksb-oxidized">
+                        05 / Inlaid and over-band crack systems
+                      </p>
+                    </div>
+                    <h3 data-blur-title class="font-display text-4xl font-medium uppercase leading-[1.08] tracking-[0.02em] text-aksb-text md:text-5xl">Road Crack Repair System</h3>
+                    <div data-reveal style="--d:0.08s">
+                      <div>
+                        <p class="mt-5 max-w-lg text-base font-body leading-relaxed text-aksb-muted">Roadflex H is a BBA / HAPAS certified bituminous inlaid flexible crack repair system for repairing cracks and adjacent multiple cracks — suitable for longitudinal cracking, surface ravelling, rutting, stress cracking and lane joints. Techscreed is a BBA / HAPAS certified fill and over-band system for 5–40mm cracks, and is particularly suited to sealing cracks on existing pavements that are to be overlaid by asphalt.</p>
+                        <ul class="mt-7 max-w-lg divide-y divide-aksb-text/10 border-y border-aksb-text/10">
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Roadflex H</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                          <li class="group flex items-center justify-between py-3 transition-colors duration-300 hover:bg-aksb-dark/[0.03]">
+                            <span class="text-sm font-body font-medium text-aksb-text/80">Techscreed</span>
+                            <span class="h-1.5 w-1.5 rounded-full bg-aksb-oxidized/50 transition-all duration-300 group-hover:scale-150 group-hover:bg-aksb-oxidized"></span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div data-mask data-dir="left" class="h-[260px] rounded-xl sm:h-[340px] lg:h-[400px]">
+                      <div class="mask-clip h-full w-full overflow-hidden rounded-[inherit]">
+                        <img src="./images/crack-roadflex.jpg" alt="Road Crack Repair System" loading="lazy" class="h-full w-full object-cover" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ Why AKSB ============ -->
+        <section id="why" class="w-full scroll-mt-16 bg-aksb-dark">
+          <div class="mx-auto max-w-[1280px] px-6 py-24 lg:px-10 lg:py-32">
+            <div data-reveal>
+              <p class="mb-4 text-xs font-body font-medium uppercase tracking-[0.2em] text-aksb-oxidized">
+                Why Choose AKSB
+              </p>
+              <h2 class="max-w-2xl font-display text-4xl font-medium uppercase leading-[1.1] text-aksb-light md:text-5xl">
+                Your trusted partner in road infrastructure
+              </h2>
+            </div>
+
+            <div class="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+              <div data-reveal class="h-full" style="--d:0s">
+                <div class="group h-full bg-aksb-dark p-7 transition-colors duration-500 hover:bg-[#151210] md:p-8">
+                  <h3 class="font-display text-xl font-medium uppercase tracking-[0.02em] text-aksb-light">Experienced technical team</h3>
+                  <p class="mt-3 text-sm font-body leading-relaxed text-aksb-light/50 transition-colors duration-500 group-hover:text-aksb-light/70">Skilled and dedicated professionals with extensive industry experience on live carriageways.</p>
+                  <div class="mt-5 h-px w-8 bg-aksb-oxidized/40 transition-all duration-500 group-hover:w-16 group-hover:bg-aksb-oxidized"></div>
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.05s">
+                <div class="group h-full bg-aksb-dark p-7 transition-colors duration-500 hover:bg-[#151210] md:p-8">
+                  <h3 class="font-display text-xl font-medium uppercase tracking-[0.02em] text-aksb-light">Highway maintenance specialist</h3>
+                  <p class="mt-3 text-sm font-body leading-relaxed text-aksb-light/50 transition-colors duration-500 group-hover:text-aksb-light/70">Focused on highway and federal / state road works — not a general contractor doing roads on the side.</p>
+                  <div class="mt-5 h-px w-8 bg-aksb-oxidized/40 transition-all duration-500 group-hover:w-16 group-hover:bg-aksb-oxidized"></div>
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.1s">
+                <div class="group h-full bg-aksb-dark p-7 transition-colors duration-500 hover:bg-[#151210] md:p-8">
+                  <h3 class="font-display text-xl font-medium uppercase tracking-[0.02em] text-aksb-light">Quality workmanship</h3>
+                  <p class="mt-3 text-sm font-body leading-relaxed text-aksb-light/50 transition-colors duration-500 group-hover:text-aksb-light/70">Committed to quality, precision and safety on every scope, from marking to bridge deck repair.</p>
+                  <div class="mt-5 h-px w-8 bg-aksb-oxidized/40 transition-all duration-500 group-hover:w-16 group-hover:bg-aksb-oxidized"></div>
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.15s">
+                <div class="group h-full bg-aksb-dark p-7 transition-colors duration-500 hover:bg-[#151210] md:p-8">
+                  <h3 class="font-display text-xl font-medium uppercase tracking-[0.02em] text-aksb-light">Cost competitive</h3>
+                  <p class="mt-3 text-sm font-body leading-relaxed text-aksb-light/50 transition-colors duration-500 group-hover:text-aksb-light/70">Delivering the best value for clients without cutting the parts of the job that matter.</p>
+                  <div class="mt-5 h-px w-8 bg-aksb-oxidized/40 transition-all duration-500 group-hover:w-16 group-hover:bg-aksb-oxidized"></div>
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.2s">
+                <div class="group h-full bg-aksb-dark p-7 transition-colors duration-500 hover:bg-[#151210] md:p-8">
+                  <h3 class="font-display text-xl font-medium uppercase tracking-[0.02em] text-aksb-light">On-time delivery</h3>
+                  <p class="mt-3 text-sm font-body leading-relaxed text-aksb-light/50 transition-colors duration-500 group-hover:text-aksb-light/70">A reputation built on handing over projects ahead of schedule, lane closure after lane closure.</p>
+                  <div class="mt-5 h-px w-8 bg-aksb-oxidized/40 transition-all duration-500 group-hover:w-16 group-hover:bg-aksb-oxidized"></div>
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.25s">
+                <div class="group h-full bg-aksb-dark p-7 transition-colors duration-500 hover:bg-[#151210] md:p-8">
+                  <h3 class="font-display text-xl font-medium uppercase tracking-[0.02em] text-aksb-light">International technology partners</h3>
+                  <p class="mt-3 text-sm font-body leading-relaxed text-aksb-light/50 transition-colors duration-500 group-hover:text-aksb-light/70">Adopting proven technologies and techniques through partnerships in Australia and the UK.</p>
+                  <div class="mt-5 h-px w-8 bg-aksb-oxidized/40 transition-all duration-500 group-hover:w-16 group-hover:bg-aksb-oxidized"></div>
+                </div>
+              </div>
+            </div>
+
+            <div data-reveal style="--d:0.1s">
+              <div class="mt-14 flex flex-col items-center gap-4 text-center">
+                <p class="max-w-md text-sm font-body text-aksb-light/50">
+                  CIDB G4 registered contractor with Bumiputera status, based in Puncak Alam, Selangor,
+                  with a branch office in Yong Peng, Johor.
+                </p>
+                <button data-goto="projects" class="group inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-3.5 text-xs font-body font-semibold uppercase tracking-[0.14em] text-aksb-light transition-all duration-400 hover:border-aksb-oxidized hover:bg-aksb-oxidized">
+                  See the work
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right transition-transform duration-400 group-hover:rotate-45"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ Projects (sticky horizontal scroll) ============ -->
+        <section id="projects" data-projects class="relative w-full scroll-mt-16 bg-aksb-dark" style="height:420vh">
+          <div class="sticky top-0 flex h-[100dvh] w-full flex-col overflow-hidden">
+            <!-- Section label -->
+            <div class="z-20 flex items-end justify-between px-6 pb-4 pt-24 lg:px-10">
+              <div>
+                <p class="text-xs font-body uppercase tracking-[0.2em] text-aksb-oxidized">
+                  Featured Works
+                </p>
+                <h2 class="mt-1 font-display text-2xl font-medium uppercase text-aksb-light md:text-3xl">
+                  Infrastructure Portfolio
+                </h2>
+              </div>
+              <div class="hidden items-center gap-4 md:flex">
+                <span class="text-xs font-body uppercase tracking-[0.14em] text-aksb-light/50">
+                  8 major projects
+                </span>
+                <div class="relative h-px w-32 overflow-hidden bg-aksb-light/20">
+                  <div data-pbar class="absolute left-0 top-0 h-full bg-aksb-oxidized" style="width:0%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Horizontal scrolling project cards -->
+            <div class="flex flex-1 items-center overflow-hidden">
+              <div data-ptrack class="flex gap-6 pl-6 pr-6 lg:pl-10" style="transform:translateX(0px);will-change:transform">
+                <article class="group relative w-[78vw] flex-shrink-0 sm:w-[420px] md:w-[380px]">
+                  <div class="relative h-[38vh] overflow-hidden rounded-xl md:h-[44vh]">
+                    <img src="./images/joint-elastomeric.jpg" alt="Elastomeric bridge joint replacement, East–West corridor" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+                    <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+                    <span class="absolute right-4 top-3 font-display text-xl font-medium text-aksb-light" style="text-shadow:0 1px 12px rgba(0,0,0,0.7)">2026</span>
+                    <span class="absolute bottom-3 left-4 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-light/80">Bridge Expansion Joint</span>
+                    <div class="absolute bottom-0 left-0 h-1 w-0 bg-aksb-oxidized transition-all duration-500 ease-out group-hover:w-full"></div>
+                  </div>
+                  <div class="mt-5 px-1">
+                    <p class="mb-1.5 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-oxidized">PROLINTAS (LKSA)</p>
+                    <h3 class="font-display text-xl font-medium text-aksb-light">Elastomeric bridge joint replacement, East–West corridor</h3>
+                    <p class="mt-2 text-sm font-body leading-relaxed text-aksb-light/50">Supply and replace damaged elastomeric bridge joints at various locations along the highway (Jabor – Gerik).</p>
+                  </div>
+                </article>
+                <article class="group relative w-[78vw] flex-shrink-0 sm:w-[420px] md:w-[380px]">
+                  <div class="relative h-[38vh] overflow-hidden rounded-xl md:h-[44vh]">
+                    <img src="./images/joint-asphaltic-plug.jpg" alt="Bridge joint rectification, Cheras–Kajang Highway" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+                    <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+                    <span class="absolute right-4 top-3 font-display text-xl font-medium text-aksb-light" style="text-shadow:0 1px 12px rgba(0,0,0,0.7)">2025</span>
+                    <span class="absolute bottom-3 left-4 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-light/80">Bridge Expansion Joint</span>
+                    <div class="absolute bottom-0 left-0 h-1 w-0 bg-aksb-oxidized transition-all duration-500 ease-out group-hover:w-full"></div>
+                  </div>
+                  <div class="mt-5 px-1">
+                    <p class="mb-1.5 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-oxidized">Grand Saga Sdn Bhd</p>
+                    <h3 class="font-display text-xl font-medium text-aksb-light">Bridge joint rectification, Cheras–Kajang Highway</h3>
+                    <p class="mt-2 text-sm font-body leading-relaxed text-aksb-light/50">Rectification works of damaged bridge joints along the Cheras–Kajang Highway concession.</p>
+                  </div>
+                </article>
+                <article class="group relative w-[78vw] flex-shrink-0 sm:w-[420px] md:w-[380px]">
+                  <div class="relative h-[38vh] overflow-hidden rounded-xl md:h-[44vh]">
+                    <img src="./images/joint-elastomeric.jpg" alt="Bridge joint repair, Kuang–Sg. Buloh Expressway" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+                    <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+                    <span class="absolute right-4 top-3 font-display text-xl font-medium text-aksb-light" style="text-shadow:0 1px 12px rgba(0,0,0,0.7)">2025</span>
+                    <span class="absolute bottom-3 left-4 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-light/80">Bridge Expansion Joint</span>
+                    <div class="absolute bottom-0 left-0 h-1 w-0 bg-aksb-oxidized transition-all duration-500 ease-out group-hover:w-full"></div>
+                  </div>
+                  <div class="mt-5 px-1">
+                    <p class="mb-1.5 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-oxidized">LATAR Highway</p>
+                    <h3 class="font-display text-xl font-medium text-aksb-light">Bridge joint repair, Kuang–Sg. Buloh Expressway</h3>
+                    <p class="mt-2 text-sm font-body leading-relaxed text-aksb-light/50">Proposed repair of existing bridge joints at Kuang–Sg. Buloh Expressway (KSE) for year 2025.</p>
+                  </div>
+                </article>
+                <article class="group relative w-[78vw] flex-shrink-0 sm:w-[420px] md:w-[380px]">
+                  <div class="relative h-[38vh] overflow-hidden rounded-xl md:h-[44vh]">
+                    <img src="./images/joint-asphaltic-plug.jpg" alt="Expansion joint &amp; bridge maintenance works (ASEAN)" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+                    <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+                    <span class="absolute right-4 top-3 font-display text-xl font-medium text-aksb-light" style="text-shadow:0 1px 12px rgba(0,0,0,0.7)">2025</span>
+                    <span class="absolute bottom-3 left-4 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-light/80">Bridge Works</span>
+                    <div class="absolute bottom-0 left-0 h-1 w-0 bg-aksb-oxidized transition-all duration-500 ease-out group-hover:w-full"></div>
+                  </div>
+                  <div class="mt-5 px-1">
+                    <p class="mb-1.5 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-oxidized">Bina Masyhur Sdn Bhd (SELIA Group)</p>
+                    <h3 class="font-display text-xl font-medium text-aksb-light">Expansion joint &amp; bridge maintenance works (ASEAN)</h3>
+                    <p class="mt-2 text-sm font-body leading-relaxed text-aksb-light/50">Kerja-kerja membaikpulih expansion joint dan kerja-kerja berkaitan penyelenggaraan jambatan 2025.</p>
+                  </div>
+                </article>
+                <article class="group relative w-[78vw] flex-shrink-0 sm:w-[420px] md:w-[380px]">
+                  <div class="relative h-[38vh] overflow-hidden rounded-xl md:h-[44vh]">
+                    <img src="./images/cst-walkway.jpg" alt="Expansion joint &amp; road marking, FT 1416 Kota Tinggi" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+                    <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+                    <span class="absolute right-4 top-3 font-display text-xl font-medium text-aksb-light" style="text-shadow:0 1px 12px rgba(0,0,0,0.7)">2025</span>
+                    <span class="absolute bottom-3 left-4 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-light/80">Road Furniture</span>
+                    <div class="absolute bottom-0 left-0 h-1 w-0 bg-aksb-oxidized transition-all duration-500 ease-out group-hover:w-full"></div>
+                  </div>
+                  <div class="mt-5 px-1">
+                    <p class="mb-1.5 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-oxidized">Bina Masyhur Sdn Bhd (SELIA Group)</p>
+                    <h3 class="font-display text-xl font-medium text-aksb-light">Expansion joint &amp; road marking, FT 1416 Kota Tinggi</h3>
+                    <p class="mt-2 text-sm font-body leading-relaxed text-aksb-light/50">Expansion joint and road marking works at FT 1416 Sec 3.00 – 4.00, Jalan Felda Inas, Kota Tinggi, Johor.</p>
+                  </div>
+                </article>
+                <article class="group relative w-[78vw] flex-shrink-0 sm:w-[420px] md:w-[380px]">
+                  <div class="relative h-[38vh] overflow-hidden rounded-xl md:h-[44vh]">
+                    <img src="./images/joint-asphaltic-plug.jpg" alt="Nilai overpass bridge joint repairs, Section CS" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+                    <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+                    <span class="absolute right-4 top-3 font-display text-xl font-medium text-aksb-light" style="text-shadow:0 1px 12px rgba(0,0,0,0.7)">2025</span>
+                    <span class="absolute bottom-3 left-4 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-light/80">Bridge Expansion Joint</span>
+                    <div class="absolute bottom-0 left-0 h-1 w-0 bg-aksb-oxidized transition-all duration-500 ease-out group-hover:w-full"></div>
+                  </div>
+                  <div class="mt-5 px-1">
+                    <p class="mb-1.5 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-oxidized">Edgenta Infrastructure Services (EIS + PLUS)</p>
+                    <h3 class="font-display text-xl font-medium text-aksb-light">Nilai overpass bridge joint repairs, Section CS</h3>
+                    <p class="mt-2 text-sm font-body leading-relaxed text-aksb-light/50">Bridge joint repair works for Nilai Railway Overpass Bridge at KM280.50 and Nilai Overpass Bridge at KM280.60 south bound.</p>
+                  </div>
+                </article>
+                <article class="group relative w-[78vw] flex-shrink-0 sm:w-[420px] md:w-[380px]">
+                  <div class="relative h-[38vh] overflow-hidden rounded-xl md:h-[44vh]">
+                    <img src="./images/crack-roadflex.jpg" alt="Sungai Pagoh &amp; Sungai Pendendam bridges, N–S Expressway" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+                    <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+                    <span class="absolute right-4 top-3 font-display text-xl font-medium text-aksb-light" style="text-shadow:0 1px 12px rgba(0,0,0,0.7)">2024</span>
+                    <span class="absolute bottom-3 left-4 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-light/80">Bridge Expansion Joint</span>
+                    <div class="absolute bottom-0 left-0 h-1 w-0 bg-aksb-oxidized transition-all duration-500 ease-out group-hover:w-full"></div>
+                  </div>
+                  <div class="mt-5 px-1">
+                    <p class="mb-1.5 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-oxidized">Edgenta Infrastructure Services (EIS + PLUS)</p>
+                    <h3 class="font-display text-xl font-medium text-aksb-light">Sungai Pagoh &amp; Sungai Pendendam bridges, N–S Expressway</h3>
+                    <p class="mt-2 text-sm font-body leading-relaxed text-aksb-light/50">Bridge joint repair works at KM132.40 and KM133.80 both bound, Section S3, North–South Expressway.</p>
+                  </div>
+                </article>
+                <article class="group relative w-[78vw] flex-shrink-0 sm:w-[420px] md:w-[380px]">
+                  <div class="relative h-[38vh] overflow-hidden rounded-xl md:h-[44vh]">
+                    <img src="./images/hfst-roundabout.jpg" alt="Bridge expansion joint repairs, Kajang SILK Highway" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+                    <div class="absolute inset-0 bg-aksb-dark/40 transition-colors duration-500 group-hover:bg-aksb-dark/20"></div>
+                    <span class="absolute right-4 top-3 font-display text-xl font-medium text-aksb-light" style="text-shadow:0 1px 12px rgba(0,0,0,0.7)">2024</span>
+                    <span class="absolute bottom-3 left-4 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-light/80">Bridge Expansion Joint</span>
+                    <div class="absolute bottom-0 left-0 h-1 w-0 bg-aksb-oxidized transition-all duration-500 ease-out group-hover:w-full"></div>
+                  </div>
+                  <div class="mt-5 px-1">
+                    <p class="mb-1.5 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-oxidized">PROLINTAS (SILK)</p>
+                    <h3 class="font-display text-xl font-medium text-aksb-light">Bridge expansion joint repairs, Kajang SILK Highway</h3>
+                    <p class="mt-2 text-sm font-body leading-relaxed text-aksb-light/50">Repair of damaged bridge expansion joints at various locations along the Kajang SILK Highway.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Bottom instruction -->
+            <div class="z-20 flex items-center gap-3 px-6 pb-6 lg:px-10">
+              <div class="h-px w-8 bg-aksb-light/20"></div>
+              <p class="text-[10px] font-body uppercase tracking-[0.15em] text-aksb-light/40">
+                Keep scrolling — the row follows you
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ Partners & Clients ============ -->
+        <section id="partners" class="relative w-full scroll-mt-16 bg-aksb-stone">
+          <div class="mx-auto max-w-[1280px] px-6 py-24 lg:px-10 lg:py-32">
+            <!-- Header -->
+            <div data-reveal>
+              <p class="mb-4 text-xs font-body font-medium uppercase tracking-[0.2em] text-aksb-oxidized">
+                Partners &amp; Clients
+              </p>
+            </div>
+            <h2 data-blur-title class="font-display text-4xl font-medium uppercase leading-[1.1] tracking-[0.01em] text-aksb-text md:text-5xl lg:text-6xl">Experience That Builds Trust</h2>
+            <div data-reveal style="--d:0.08s">
+              <p class="mt-4 max-w-xl text-base font-body leading-relaxed text-aksb-muted">
+                AKSB adopts new technologies and techniques through strategic partnerships with
+                established international organisations, and keeps earning repeat work from Malaysia's
+                biggest road owners.
+              </p>
+            </div>
+
+            <!-- Technology partners -->
+            <div data-reveal style="--d:0.12s">
+              <p class="mt-14 text-xs font-body font-medium uppercase tracking-[0.18em] text-aksb-oxidized">
+                Technology partners
+              </p>
+            </div>
+            <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div data-reveal class="h-full" style="--d:0s">
+                <div class="group flex h-full flex-col rounded-xl border border-aksb-text/10 bg-white/60 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-aksb-oxidized/40 hover:shadow-[0_14px_34px_rgba(166,75,41,0.12)] md:p-7">
+                  <div class="flex h-11 items-center">
+                    <img src="./images/logo-omnigrip.svg" alt="Omnigrip Direct" class="max-h-10 w-auto max-w-[170px] object-contain object-left" loading="lazy" />
+                  </div>
+                  <span class="mt-4 text-[10px] font-body uppercase tracking-[0.16em] text-aksb-muted">Australia</span>
+                  <p class="mt-3 text-sm font-body font-medium text-aksb-text/80">High friction &amp; colour surface treatment systems</p>
+                  <p class="mt-2 flex-1 text-sm font-body leading-relaxed text-aksb-muted">Smarter road safety surfacing — the technology behind AKSB’s HFST and CST scopes.</p>
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.08s">
+                <div class="group flex h-full flex-col rounded-xl border border-aksb-text/10 bg-white/60 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-aksb-oxidized/40 hover:shadow-[0_14px_34px_rgba(166,75,41,0.12)] md:p-7">
+                  <div class="flex h-11 items-center">
+                    <img src="./images/logo-roadtechs.png" alt="Roadtechs Group" class="max-h-10 w-auto max-w-[170px] object-contain object-left" loading="lazy" />
+                  </div>
+                  <span class="mt-4 text-[10px] font-body uppercase tracking-[0.16em] text-aksb-muted">United Kingdom</span>
+                  <p class="mt-3 text-sm font-body font-medium text-aksb-text/80">Road maintenance technology</p>
+                  <p class="mt-2 flex-1 text-sm font-body leading-relaxed text-aksb-muted">UK road technology group behind the BBA / HAPAS certified Roadflex H and Techscreed crack repair systems.</p>
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.16s">
+                <div class="group flex h-full flex-col rounded-xl border border-aksb-text/10 bg-white/60 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-aksb-oxidized/40 hover:shadow-[0_14px_34px_rgba(166,75,41,0.12)] md:p-7">
+                  <div class="flex h-11 items-center">
+                    <img src="./images/logo-adbruf.png" alt="Adbruf" class="max-h-10 w-auto max-w-[170px] object-contain object-left" loading="lazy" />
+                  </div>
+                  <span class="mt-4 text-[10px] font-body uppercase tracking-[0.16em] text-aksb-muted">United Kingdom</span>
+                  <p class="mt-3 text-sm font-body font-medium text-aksb-text/80">Resin surfacing specialist</p>
+                  <p class="mt-2 flex-1 text-sm font-body leading-relaxed text-aksb-muted">Resin surfacing specialists supporting the anti-skid and coloured surfacing side of the business.</p>
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.24s">
+                <div class="group flex h-full flex-col rounded-xl border border-aksb-text/10 bg-white/60 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-aksb-oxidized/40 hover:shadow-[0_14px_34px_rgba(166,75,41,0.12)] md:p-7">
+                  <div class="flex h-11 items-center">
+                    <img src="./images/logo-acpdmt.png" alt="ACP-DMT" class="max-h-10 w-auto max-w-[170px] object-contain object-left" loading="lazy" />
+                  </div>
+                  <span class="mt-4 text-[10px] font-body uppercase tracking-[0.16em] text-aksb-muted">Malaysia</span>
+                  <p class="mt-3 text-sm font-body font-medium text-aksb-text/80">Concrete &amp; structural products</p>
+                  <p class="mt-2 flex-1 text-sm font-body leading-relaxed text-aksb-muted">Local manufacturer of highway and road safety products, supplying the civil and bridge scopes.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Client logo wall -->
+            <div data-reveal style="--d:0.1s">
+              <p class="mt-16 text-xs font-body font-medium uppercase tracking-[0.18em] text-aksb-oxidized">
+                Our clients
+              </p>
+              <p class="mt-2 max-w-xl font-display text-2xl font-medium uppercase leading-[1.15] text-aksb-text md:text-3xl">
+                Highway concessionaires, agencies &amp; municipalities
+              </p>
+            </div>
+
+            <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-aksb-text/10 bg-aksb-text/10 sm:grid-cols-3">
+              <div data-reveal class="h-full" style="--d:0s">
+                <div class="group flex h-full min-h-[7.5rem] items-center justify-center bg-aksb-stone px-6 py-7 transition-colors duration-400 hover:bg-white/70">
+                  <img src="./images/logo-prolintas.png" alt="PROLINTAS Group of Companies" class="w-auto max-w-full object-contain opacity-85 transition-opacity duration-400 group-hover:opacity-100 max-h-14" loading="lazy" />
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.04s">
+                <div class="group flex h-full min-h-[7.5rem] items-center justify-center bg-aksb-stone px-6 py-7 transition-colors duration-400 hover:bg-white/70">
+                  <img src="./images/logo-plus.png" alt="PLUS Malaysia" class="w-auto max-w-full object-contain opacity-85 transition-opacity duration-400 group-hover:opacity-100 max-h-14" loading="lazy" />
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.08s">
+                <div class="group flex h-full min-h-[7.5rem] items-center justify-center bg-aksb-stone px-6 py-7 transition-colors duration-400 hover:bg-white/70">
+                  <img src="./images/logo-uem-edgenta.png" alt="UEM Edgenta" class="w-auto max-w-full object-contain opacity-85 transition-opacity duration-400 group-hover:opacity-100 max-h-14" loading="lazy" />
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.12s">
+                <div class="group flex h-full min-h-[7.5rem] items-center justify-center bg-aksb-stone px-6 py-7 transition-colors duration-400 hover:bg-white/70">
+                  <img src="./images/logo-dbkl.png" alt="Dewan Bandaraya Kuala Lumpur" class="w-auto max-w-full object-contain opacity-85 transition-opacity duration-400 group-hover:opacity-100 max-h-24" loading="lazy" />
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.16s">
+                <div class="group flex h-full min-h-[7.5rem] items-center justify-center bg-aksb-stone px-6 py-7 transition-colors duration-400 hover:bg-white/70">
+                  <img src="./images/logo-grand-saga.svg" alt="Grand Saga (LGB Group)" class="w-auto max-w-full object-contain opacity-85 transition-opacity duration-400 group-hover:opacity-100 max-h-14" loading="lazy" />
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.2s">
+                <div class="group flex h-full min-h-[7.5rem] items-center justify-center bg-aksb-stone px-6 py-7 transition-colors duration-400 hover:bg-white/70">
+                  <img src="./images/logo-putrajaya.png" alt="Perbadanan Putrajaya" class="w-auto max-w-full object-contain opacity-85 transition-opacity duration-400 group-hover:opacity-100 max-h-24" loading="lazy" />
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.24s">
+                <div class="group flex h-full min-h-[7.5rem] items-center justify-center bg-aksb-stone px-6 py-7 transition-colors duration-400 hover:bg-white/70">
+                  <img src="./images/logo-selia.png" alt="SELIA Group" class="w-auto max-w-full object-contain opacity-85 transition-opacity duration-400 group-hover:opacity-100 max-h-14" loading="lazy" />
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.28s">
+                <div class="group flex h-full min-h-[7.5rem] items-center justify-center bg-aksb-stone px-6 py-7 transition-colors duration-400 hover:bg-white/70">
+                  <span class="text-center font-display text-lg font-medium uppercase leading-tight tracking-wide text-aksb-text/70 transition-colors duration-400 group-hover:text-aksb-text">LATAR Expressway</span>
+                </div>
+              </div>
+              <div data-reveal class="h-full" style="--d:0.32s">
+                <div class="group flex h-full min-h-[7.5rem] items-center justify-center bg-aksb-stone px-6 py-7 transition-colors duration-400 hover:bg-white/70">
+                  <span class="text-center font-display text-lg font-medium uppercase leading-tight tracking-wide text-aksb-text/70 transition-colors duration-400 group-hover:text-aksb-text">Bina Masyhur Sdn Bhd</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Achievements -->
+            <div data-reveal style="--d:0.15s">
+              <div class="mt-16 border-t border-aksb-text/10 pt-12">
+                <p class="mb-8 text-xs font-body font-medium uppercase tracking-[0.18em] text-aksb-oxidized">
+                  Our achievement to date
+                </p>
+                <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+                  <div class="text-center md:text-left">
+                    <p class="font-display text-3xl font-medium text-aksb-oxidized md:text-4xl"><span data-countup="100000" data-suffix=" m²">100,000 m²</span></p>
+                    <p class="mt-1 text-xs font-body uppercase tracking-[0.12em] text-aksb-muted">Road line marking</p>
+                  </div>
+                  <div class="text-center md:text-left">
+                    <p class="font-display text-3xl font-medium text-aksb-oxidized md:text-4xl"><span data-countup="25000" data-suffix=" m²">25,000 m²</span></p>
+                    <p class="mt-1 text-xs font-body uppercase tracking-[0.12em] text-aksb-muted">Colour surface treatment</p>
+                  </div>
+                  <div class="text-center md:text-left">
+                    <p class="font-display text-3xl font-medium text-aksb-oxidized md:text-4xl"><span data-countup="20000" data-suffix=" m">20,000 m</span></p>
+                    <p class="mt-1 text-xs font-body uppercase tracking-[0.12em] text-aksb-muted">Asphaltic plug joint</p>
+                  </div>
+                  <div class="text-center md:text-left">
+                    <p class="font-display text-3xl font-medium text-aksb-oxidized md:text-4xl"><span data-countup="7000" data-suffix=" m²">7,000 m²</span></p>
+                    <p class="mt-1 text-xs font-body uppercase tracking-[0.12em] text-aksb-muted">High friction surfacing</p>
+                  </div>
+                  <div class="text-center md:text-left">
+                    <p class="font-display text-3xl font-medium text-aksb-oxidized md:text-4xl"><span data-countup="1800" data-suffix=" m">1,800 m</span></p>
+                    <p class="mt-1 text-xs font-body uppercase tracking-[0.12em] text-aksb-muted">Elastomeric joint</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Client marquee — full bleed -->
+          <div data-reveal>
+            <div class="border-t border-aksb-text/10 py-8">
+              <div class="group relative overflow-hidden">
+                <div class="flex w-max items-center gap-0 group-hover:[animation-play-state:paused]" style="animation:marquee 44s linear infinite">
+                  <div class="flex items-center">
+                    <span class="flex items-center"><img src="./images/logo-prolintas.png" alt="PROLINTAS Group of Companies" class="w-auto flex-none object-contain h-9 max-w-[170px] md:h-11" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-plus.png" alt="PLUS Malaysia" class="w-auto flex-none object-contain h-9 max-w-[170px] md:h-11" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-uem-edgenta.png" alt="UEM Edgenta" class="w-auto flex-none object-contain h-9 max-w-[170px] md:h-11" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-dbkl.png" alt="Dewan Bandaraya Kuala Lumpur" class="w-auto flex-none object-contain h-14 md:h-16" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-grand-saga.svg" alt="Grand Saga (LGB Group)" class="w-auto flex-none object-contain h-9 max-w-[170px] md:h-11" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-putrajaya.png" alt="Perbadanan Putrajaya" class="w-auto flex-none object-contain h-14 md:h-16" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-selia.png" alt="SELIA Group" class="w-auto flex-none object-contain h-9 max-w-[170px] md:h-11" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><span class="whitespace-nowrap font-display text-xl font-medium uppercase tracking-wide text-aksb-text/50 md:text-2xl">LATAR Expressway</span><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><span class="whitespace-nowrap font-display text-xl font-medium uppercase tracking-wide text-aksb-text/50 md:text-2xl">Bina Masyhur Sdn Bhd</span><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                  </div>
+                  <div class="flex items-center" aria-hidden="true">
+                    <span class="flex items-center"><img src="./images/logo-prolintas.png" alt="PROLINTAS Group of Companies" class="w-auto flex-none object-contain h-9 max-w-[170px] md:h-11" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-plus.png" alt="PLUS Malaysia" class="w-auto flex-none object-contain h-9 max-w-[170px] md:h-11" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-uem-edgenta.png" alt="UEM Edgenta" class="w-auto flex-none object-contain h-9 max-w-[170px] md:h-11" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-dbkl.png" alt="Dewan Bandaraya Kuala Lumpur" class="w-auto flex-none object-contain h-14 md:h-16" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-grand-saga.svg" alt="Grand Saga (LGB Group)" class="w-auto flex-none object-contain h-9 max-w-[170px] md:h-11" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-putrajaya.png" alt="Perbadanan Putrajaya" class="w-auto flex-none object-contain h-14 md:h-16" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><img src="./images/logo-selia.png" alt="SELIA Group" class="w-auto flex-none object-contain h-9 max-w-[170px] md:h-11" loading="lazy" /><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><span class="whitespace-nowrap font-display text-xl font-medium uppercase tracking-wide text-aksb-text/50 md:text-2xl">LATAR Expressway</span><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                    <span class="flex items-center"><span class="whitespace-nowrap font-display text-xl font-medium uppercase tracking-wide text-aksb-text/50 md:text-2xl">Bina Masyhur Sdn Bhd</span><span class="mx-8 h-1.5 w-1.5 flex-none rounded-full bg-aksb-oxidized/60 md:mx-10"></span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ Certifications ============ -->
+        <section id="certifications" class="w-full scroll-mt-16 bg-aksb-light">
+          <div class="mx-auto max-w-[1280px] px-6 py-20 lg:px-10 lg:py-28">
+            <div data-reveal>
+              <p class="mb-3 text-xs font-body font-medium uppercase tracking-[0.18em] text-aksb-oxidized">
+                Our Certifications
+              </p>
+            </div>
+            <h2 data-blur-title class="max-w-xl font-display text-3xl font-medium uppercase leading-[1.12] text-aksb-text md:text-4xl">Registered, certified &amp; audited</h2>
+            <div data-reveal style="--d:0.08s">
+              <p class="mt-4 max-w-xl text-base font-body leading-relaxed text-aksb-muted">
+                Our certifications reflect a commitment to quality, safety, environment and industry
+                standards, upheld on every project we deliver.
+              </p>
+            </div>
+
+            <div class="mt-10 divide-y divide-aksb-text/10 border-y border-aksb-text/10">
+              <div data-reveal style="--d:0s">
+                <div class="group grid grid-cols-1 gap-2 py-5 transition-colors duration-400 hover:bg-white/60 sm:grid-cols-[minmax(0,15rem)_1fr] sm:items-baseline sm:gap-8">
+                  <p class="font-body text-sm font-semibold text-aksb-text">CIDB Malaysia</p>
+                  <div>
+                    <p class="font-body text-sm font-medium text-aksb-text/80">Sijil Perolehan Kerja Kerajaan</p>
+                    <p class="mt-1 font-body text-sm leading-relaxed text-aksb-muted">Grade G4 · B (B04), CE (CE01, CE02, CE21, CE30, CE32, CE42) and ME (M15)</p>
+                  </div>
+                </div>
+              </div>
+              <div data-reveal style="--d:0.05s">
+                <div class="group grid grid-cols-1 gap-2 py-5 transition-colors duration-400 hover:bg-white/60 sm:grid-cols-[minmax(0,15rem)_1fr] sm:items-baseline sm:gap-8">
+                  <p class="font-body text-sm font-semibold text-aksb-text">CIDB Malaysia</p>
+                  <div>
+                    <p class="font-body text-sm font-medium text-aksb-text/80">Perakuan Pendaftaran</p>
+                    <p class="mt-1 font-body text-sm leading-relaxed text-aksb-muted">Registered contractor, Bumiputera status · valid to 14 July 2029</p>
+                  </div>
+                </div>
+              </div>
+              <div data-reveal style="--d:0.1s">
+                <div class="group grid grid-cols-1 gap-2 py-5 transition-colors duration-400 hover:bg-white/60 sm:grid-cols-[minmax(0,15rem)_1fr] sm:items-baseline sm:gap-8">
+                  <p class="font-body text-sm font-semibold text-aksb-text">UEM Edgenta Berhad</p>
+                  <div>
+                    <p class="font-body text-sm font-medium text-aksb-text/80">Certificate of Vendor Registration</p>
+                    <p class="mt-1 font-body text-sm leading-relaxed text-aksb-muted">Contractor category · registration valid 8 August 2024 to 7 August 2029</p>
+                  </div>
+                </div>
+              </div>
+              <div data-reveal style="--d:0.15s">
+                <div class="group grid grid-cols-1 gap-2 py-5 transition-colors duration-400 hover:bg-white/60 sm:grid-cols-[minmax(0,15rem)_1fr] sm:items-baseline sm:gap-8">
+                  <p class="font-body text-sm font-semibold text-aksb-text">JCCD Johor</p>
+                  <div>
+                    <p class="font-body text-sm font-medium text-aksb-text/80">Sijil Kontraktor Johor</p>
+                    <p class="mt-1 font-body text-sm leading-relaxed text-aksb-muted">Grade G4 · B, CE and ME, valid 10 February 2025 to 9 February 2027</p>
+                  </div>
+                </div>
+              </div>
+              <div data-reveal style="--d:0.2s">
+                <div class="group grid grid-cols-1 gap-2 py-5 transition-colors duration-400 hover:bg-white/60 sm:grid-cols-[minmax(0,15rem)_1fr] sm:items-baseline sm:gap-8">
+                  <p class="font-body text-sm font-semibold text-aksb-text">FGV Holdings Berhad</p>
+                  <div>
+                    <p class="font-body text-sm font-medium text-aksb-text/80">Vendor Registration Declaration</p>
+                    <p class="mt-1 font-body text-sm leading-relaxed text-aksb-muted">Civil engineering and supply categories, Grade G4 · valid to 21 January 2028</p>
+                  </div>
+                </div>
+              </div>
+              <div data-reveal style="--d:0.25s">
+                <div class="group grid grid-cols-1 gap-2 py-5 transition-colors duration-400 hover:bg-white/60 sm:grid-cols-[minmax(0,15rem)_1fr] sm:items-baseline sm:gap-8">
+                  <p class="font-body text-sm font-semibold text-aksb-text">Dewan Bandaraya Kuala Lumpur</p>
+                  <div>
+                    <p class="font-body text-sm font-medium text-aksb-text/80">Sijil Pendaftaran Syarikat</p>
+                    <p class="mt-1 font-body text-sm leading-relaxed text-aksb-muted">Registered company with DBKL · valid 12 February 2026 to 12 February 2027</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ Contact ============ -->
+        <section id="contact" class="w-full scroll-mt-16 bg-aksb-light">
+          <div class="mx-auto max-w-[1280px] px-6 py-20 lg:px-10 lg:py-28">
+            <div data-reveal>
+              <p class="mb-3 text-xs font-body font-medium uppercase tracking-[0.2em] text-aksb-oxidized">
+                Contact Us
+              </p>
+            </div>
+            <h2 data-blur-title class="font-display text-4xl font-medium uppercase leading-[1.08] text-aksb-text md:text-5xl lg:text-6xl">Your Vision. Our Commitment.</h2>
+            <div data-reveal style="--d:0.08s">
+              <p class="mt-4 max-w-2xl text-base font-body leading-relaxed text-aksb-muted md:text-lg">
+                Tell us about the road, bridge or surfacing scope you are pricing. We will come back
+                with the most practical method for the site.
+              </p>
+            </div>
+
+            <div class="mt-14 grid grid-cols-1 gap-14 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
+              <!-- Enquiry form -->
+              <div data-reveal>
+                <h3 class="font-display text-2xl font-medium uppercase text-aksb-text md:text-3xl">
+                  Start the conversation
+                </h3>
+                <p class="mt-3 max-w-md text-sm font-body leading-relaxed text-aksb-muted">
+                  A few details are enough. Drawings and BQs can follow by email once we know what we
+                  are looking at.
+                </p>
+                <div class="mt-8">
+                  <form data-enquiry data-mailto="aksbglobal@gmail.com" class="mt-2">
+                    <div class="grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">
+                      <div>
+                        <label for="cf-name" class="block text-[11px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">Your name</label>
+                        <input id="cf-name" name="name" required autocomplete="name" class="w-full border-b border-aksb-text/20 bg-transparent pb-3 pt-2 text-base font-body text-aksb-text placeholder:text-aksb-text/35 outline-none transition-colors duration-300 focus:border-aksb-oxidized" placeholder="Ahmad bin Abdullah" />
+                      </div>
+                      <div>
+                        <label for="cf-company" class="block text-[11px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">Company</label>
+                        <input id="cf-company" name="company" autocomplete="organization" class="w-full border-b border-aksb-text/20 bg-transparent pb-3 pt-2 text-base font-body text-aksb-text placeholder:text-aksb-text/35 outline-none transition-colors duration-300 focus:border-aksb-oxidized" placeholder="Company / agency" />
+                      </div>
+                      <div>
+                        <label for="cf-phone" class="block text-[11px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">Phone</label>
+                        <input id="cf-phone" name="phone" type="tel" required autocomplete="tel" class="w-full border-b border-aksb-text/20 bg-transparent pb-3 pt-2 text-base font-body text-aksb-text placeholder:text-aksb-text/35 outline-none transition-colors duration-300 focus:border-aksb-oxidized" placeholder="+60 12 345 6789" />
+                      </div>
+                      <div>
+                        <label for="cf-email" class="block text-[11px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">Email</label>
+                        <input id="cf-email" name="email" type="email" required autocomplete="email" class="w-full border-b border-aksb-text/20 bg-transparent pb-3 pt-2 text-base font-body text-aksb-text placeholder:text-aksb-text/35 outline-none transition-colors duration-300 focus:border-aksb-oxidized" placeholder="you@company.com" />
+                      </div>
+                    </div>
+
+                    <fieldset class="mt-9">
+                      <legend class="block text-[11px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">What is the work about?</legend>
+                      <div class="mt-4 grid grid-cols-1 gap-1 sm:grid-cols-2">
+                        <label class="scope-opt flex cursor-pointer items-center gap-3 border-b border-aksb-text/10 py-3 transition-colors duration-300">
+                          <input type="radio" name="scope" value="Road Furniture" class="peer sr-only" />
+                          <span class="scope-dot h-2 w-2 flex-none transition-all duration-300"></span>
+                          <span class="text-sm font-body font-medium">Road Furniture</span>
+                        </label>
+                        <label class="scope-opt flex cursor-pointer items-center gap-3 border-b border-aksb-text/10 py-3 transition-colors duration-300">
+                          <input type="radio" name="scope" value="Surface Treatment &amp; Anti-Skid" class="peer sr-only" />
+                          <span class="scope-dot h-2 w-2 flex-none transition-all duration-300"></span>
+                          <span class="text-sm font-body font-medium">Surface Treatment &amp; Anti-Skid</span>
+                        </label>
+                        <label class="scope-opt flex cursor-pointer items-center gap-3 border-b border-aksb-text/10 py-3 transition-colors duration-300">
+                          <input type="radio" name="scope" value="Civil &amp; Structure" class="peer sr-only" />
+                          <span class="scope-dot h-2 w-2 flex-none transition-all duration-300"></span>
+                          <span class="text-sm font-body font-medium">Civil &amp; Structure</span>
+                        </label>
+                        <label class="scope-opt flex cursor-pointer items-center gap-3 border-b border-aksb-text/10 py-3 transition-colors duration-300">
+                          <input type="radio" name="scope" value="Bridge Expansion Joint" class="peer sr-only" />
+                          <span class="scope-dot h-2 w-2 flex-none transition-all duration-300"></span>
+                          <span class="text-sm font-body font-medium">Bridge Expansion Joint</span>
+                        </label>
+                        <label class="scope-opt flex cursor-pointer items-center gap-3 border-b border-aksb-text/10 py-3 transition-colors duration-300">
+                          <input type="radio" name="scope" value="Road Crack Repair System" class="peer sr-only" />
+                          <span class="scope-dot h-2 w-2 flex-none transition-all duration-300"></span>
+                          <span class="text-sm font-body font-medium">Road Crack Repair System</span>
+                        </label>
+                        <label class="scope-opt flex cursor-pointer items-center gap-3 border-b border-aksb-text/10 py-3 transition-colors duration-300">
+                          <input type="radio" name="scope" value="Something else" class="peer sr-only" />
+                          <span class="scope-dot h-2 w-2 flex-none transition-all duration-300"></span>
+                          <span class="text-sm font-body font-medium">Something else</span>
+                        </label>
+                      </div>
+                    </fieldset>
+
+                    <div class="mt-9">
+                      <label for="cf-message" class="block text-[11px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">Tell us about the site</label>
+                      <textarea id="cf-message" name="message" required rows="4" class="w-full border-b border-aksb-text/20 bg-transparent pb-3 pt-2 text-base font-body text-aksb-text placeholder:text-aksb-text/35 outline-none transition-colors duration-300 focus:border-aksb-oxidized resize-none leading-relaxed" placeholder="Location, scope, quantities if you have them, and when the work needs to happen."></textarea>
+                    </div>
+
+                    <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                      <button type="submit" class="group inline-flex w-fit items-center gap-2 rounded-full bg-aksb-dark px-8 py-4 text-xs font-body font-semibold uppercase tracking-[0.14em] text-aksb-light transition-all duration-400 hover:-translate-y-0.5 hover:bg-aksb-oxidized">
+                        Send enquiry
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right transition-transform duration-400 group-hover:rotate-45"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                      </button>
+                      <p class="text-xs font-body leading-relaxed text-aksb-muted">
+                        Opens your mail app addressed to aksbglobal@gmail.com —<br class="hidden sm:block" />
+                        or WhatsApp us at
+                        <a href="https://wa.me/60193665892" target="_blank" rel="noreferrer" class="font-medium text-aksb-text underline decoration-aksb-oxidized/50 underline-offset-4 transition-colors duration-300 hover:text-aksb-oxidized">+6019-366 5892</a>.
+                      </p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Direct lines + proof -->
+              <div>
+                <div data-reveal style="--d:0.1s">
+                  <div class="border-t border-aksb-text/10">
+                    <a href="https://wa.me/60193665892" target="_blank" rel="noreferrer" class="group flex items-start gap-4 border-b border-aksb-text/10 py-5 transition-colors duration-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle mt-0.5 flex-none text-aksb-oxidized transition-transform duration-300 group-hover:-translate-y-0.5"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>
+                      <span>
+                        <span class="block text-[10px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">WhatsApp</span>
+                        <span class="mt-1 block text-sm font-body font-medium leading-relaxed text-aksb-text transition-colors duration-300 group-hover:text-aksb-oxidized">+6019-366 5892</span>
+                      </span>
+                    </a>
+                    <a href="mailto:aksbglobal@gmail.com" class="group flex items-start gap-4 border-b border-aksb-text/10 py-5 transition-colors duration-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail mt-0.5 flex-none text-aksb-oxidized transition-transform duration-300 group-hover:-translate-y-0.5"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+                      <span>
+                        <span class="block text-[10px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">Email</span>
+                        <span class="mt-1 block text-sm font-body font-medium leading-relaxed text-aksb-text transition-colors duration-300 group-hover:text-aksb-oxidized">aksbglobal@gmail.com</span>
+                      </span>
+                    </a>
+                    <a href="tel:+60360875923" class="group flex items-start gap-4 border-b border-aksb-text/10 py-5 transition-colors duration-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone mt-0.5 flex-none text-aksb-oxidized transition-transform duration-300 group-hover:-translate-y-0.5"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
+                      <span>
+                        <span class="block text-[10px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">Office</span>
+                        <span class="mt-1 block text-sm font-body font-medium leading-relaxed text-aksb-text transition-colors duration-300 group-hover:text-aksb-oxidized">+603-6087 5923</span>
+                      </span>
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Pusat+Perdagangan+Alam+Jaya+42300+Bandar+Puncak+Alam+Selangor" target="_blank" rel="noreferrer" class="group flex items-start gap-4 border-b border-aksb-text/10 py-5 transition-colors duration-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mt-0.5 flex-none text-aksb-oxidized transition-transform duration-300 group-hover:-translate-y-0.5"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                      <span>
+                        <span class="block text-[10px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">Head office</span>
+                        <span class="mt-1 block text-sm font-body font-medium leading-relaxed text-aksb-text transition-colors duration-300 group-hover:text-aksb-oxidized">No. 7-G&amp;1, Jalan PPAJ 2/2, Pusat Perdagangan Alam Jaya, 42300 Bandar Puncak Alam, Selangor, Malaysia</span>
+                      </span>
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Jalan+Tropika+12+Taman+Bukit+Tropika+83700+Yong+Peng+Johor" target="_blank" rel="noreferrer" class="group flex items-start gap-4 border-b border-aksb-text/10 py-5 transition-colors duration-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mt-0.5 flex-none text-aksb-oxidized transition-transform duration-300 group-hover:-translate-y-0.5"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                      <span>
+                        <span class="block text-[10px] font-body font-medium uppercase tracking-[0.15em] text-aksb-muted">Johor branch</span>
+                        <span class="mt-1 block text-sm font-body font-medium leading-relaxed text-aksb-text transition-colors duration-300 group-hover:text-aksb-oxidized">2 PTD 28218, Jalan Tropika 12, Taman Bukit Tropika, 83700 Yong Peng, Batu Pahat, Johor</span>
+                      </span>
+                    </a>
+                  </div>
+
+                  <div class="mt-6 space-y-1.5 text-sm font-body leading-relaxed text-aksb-muted">
+                    <p>AKSB Global Sdn Bhd · 1287934-H</p>
+                    <p>Contact person: Amrizal Aziz</p>
+                    <p>CIDB G4 · Bumiputera status · Est. 2018</p>
+                  </div>
+                </div>
+
+                <div class="mt-10 grid grid-cols-2 gap-4">
+                  <div data-mask data-dir="up" class="h-[150px] rounded-lg sm:h-[180px]">
+                    <div class="mask-clip h-full w-full overflow-hidden rounded-[inherit]">
+                      <img src="./images/cst-carriageway.jpg" alt="Colour surface treatment site photo" loading="lazy" class="h-full w-full object-cover" />
+                    </div>
+                  </div>
+                  <div data-mask data-dir="up" style="--d:0.12s" class="h-[150px] rounded-lg sm:h-[180px]">
+                    <div class="mask-clip h-full w-full overflow-hidden rounded-[inherit]">
+                      <img src="./images/joint-elastomeric.jpg" alt="Elastomeric bridge joint site photo" loading="lazy" class="h-full w-full object-cover" />
+                    </div>
+                  </div>
+                </div>
+                <div data-reveal style="--d:0.15s">
+                  <div class="mt-4 rounded-xl bg-aksb-dark p-7">
+                    <p class="font-display text-xl font-medium uppercase leading-snug text-aksb-light">
+                      Building connections.
+                      <br />
+                      <span class="text-aksb-oxidized">Delivering excellence.</span>
+                    </p>
+                    <p class="mt-3 text-sm font-body leading-relaxed text-aksb-light/50">
+                      Partner with us for safe, reliable and high-quality infrastructure solutions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ FAQ ============ -->
+        <section class="w-full bg-aksb-stone">
+          <div class="mx-auto max-w-[1280px] px-6 py-24 lg:px-10 lg:py-32">
+            <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+              <div data-reveal>
+                <p class="mb-4 text-xs font-body font-medium uppercase tracking-[0.2em] text-aksb-oxidized">
+                  Common Questions
+                </p>
+                <h2 class="font-display text-4xl font-medium uppercase leading-[1.1] text-aksb-text md:text-5xl">
+                  Before you
+                  <br />
+                  pick up the phone
+                </h2>
+                <p class="mt-4 max-w-sm text-sm font-body leading-relaxed text-aksb-muted">
+                  The things clients usually ask first. Anything else — the team answers WhatsApp
+                  quicker than you would expect.
+                </p>
+              </div>
+
+              <div data-reveal style="--d:0.1s">
+                <div data-faq class="border-b border-aksb-text/10">
+                  <div class="border-t border-aksb-text/10">
+                    <button data-faq-btn aria-expanded="true" class="group flex w-full items-baseline justify-between gap-6 py-6 text-left">
+                      <span data-faq-q class="font-display text-xl font-medium leading-snug transition-colors duration-300 md:text-2xl text-aksb-oxidized">What work does AKSB Global actually do?</span>
+                      <svg data-faq-icon xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus mt-1 flex-none self-start text-aksb-text/40 transition-transform duration-400 rotate-45 text-aksb-oxidized"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                    <div data-faq-panel class="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" style="grid-template-rows:1fr">
+                      <div class="overflow-hidden">
+                        <p class="max-w-2xl pb-7 text-sm font-body leading-relaxed text-aksb-muted md:text-base">Five scopes: road furniture (line marking, signage, studs, flexible posts), surface treatment and anti-skid (HFST, CST, Reclamite), civil and structure works (slope protection and fencing), bridge expansion joints including deck repair, and road crack repair systems. Road maintenance is the whole business, not a side line.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-t border-aksb-text/10">
+                    <button data-faq-btn aria-expanded="false" class="group flex w-full items-baseline justify-between gap-6 py-6 text-left">
+                      <span data-faq-q class="font-display text-xl font-medium leading-snug transition-colors duration-300 md:text-2xl text-aksb-text group-hover:text-aksb-oxidized">Which areas do you cover?</span>
+                      <svg data-faq-icon xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus mt-1 flex-none self-start text-aksb-text/40 transition-transform duration-400 group-hover:text-aksb-oxidized"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                    <div data-faq-panel class="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" style="grid-template-rows:0fr">
+                      <div class="overflow-hidden">
+                        <p class="max-w-2xl pb-7 text-sm font-body leading-relaxed text-aksb-muted md:text-base">We work out of two offices — head office in Bandar Puncak Alam, Selangor, and a Johor branch in Yong Peng, Batu Pahat. Recent projects run from Klang Valley highways like LKSA, SILK, Cheras–Kajang and the Kuang–Sg. Buloh Expressway to the North–South Expressway and federal roads as far south as Kota Tinggi, Johor.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-t border-aksb-text/10">
+                    <button data-faq-btn aria-expanded="false" class="group flex w-full items-baseline justify-between gap-6 py-6 text-left">
+                      <span data-faq-q class="font-display text-xl font-medium leading-snug transition-colors duration-300 md:text-2xl text-aksb-text group-hover:text-aksb-oxidized">Is AKSB a registered contractor?</span>
+                      <svg data-faq-icon xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus mt-1 flex-none self-start text-aksb-text/40 transition-transform duration-400 group-hover:text-aksb-oxidized"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                    <div data-faq-panel class="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" style="grid-template-rows:0fr">
+                      <div class="overflow-hidden">
+                        <p class="max-w-2xl pb-7 text-sm font-body leading-relaxed text-aksb-muted md:text-base">Yes. AKSB Global Sdn Bhd (1287934-H) was incorporated in July 2018 in Selangor and is a CIDB Grade G4 registered contractor with Bumiputera status, holding B, CE and ME categories. We are also a registered vendor with UEM Edgenta, FGV Holdings, DBKL and JCCD Johor.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-t border-aksb-text/10">
+                    <button data-faq-btn aria-expanded="false" class="group flex w-full items-baseline justify-between gap-6 py-6 text-left">
+                      <span data-faq-q class="font-display text-xl font-medium leading-snug transition-colors duration-300 md:text-2xl text-aksb-text group-hover:text-aksb-oxidized">Do you take packages from main contractors and concessionaires?</span>
+                      <svg data-faq-icon xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus mt-1 flex-none self-start text-aksb-text/40 transition-transform duration-400 group-hover:text-aksb-oxidized"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                    <div data-faq-panel class="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" style="grid-template-rows:0fr">
+                      <div class="overflow-hidden">
+                        <p class="max-w-2xl pb-7 text-sm font-body leading-relaxed text-aksb-muted md:text-base">That is most of our order book. Recent clients include PROLINTAS, Grand Saga, LATAR, Edgenta Infrastructure Services and Bina Masyhur under the SELIA Group, alongside councils and public agencies.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-t border-aksb-text/10">
+                    <button data-faq-btn aria-expanded="false" class="group flex w-full items-baseline justify-between gap-6 py-6 text-left">
+                      <span data-faq-q class="font-display text-xl font-medium leading-snug transition-colors duration-300 md:text-2xl text-aksb-text group-hover:text-aksb-oxidized">Can you supply and install HFST or coloured surfacing?</span>
+                      <svg data-faq-icon xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus mt-1 flex-none self-start text-aksb-text/40 transition-transform duration-400 group-hover:text-aksb-oxidized"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                    <div data-faq-panel class="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" style="grid-template-rows:0fr">
+                      <div class="overflow-hidden">
+                        <p class="max-w-2xl pb-7 text-sm font-body leading-relaxed text-aksb-muted md:text-base">Yes. Through our partnership with Omnigrip Direct of Australia we deliver high friction surface treatment holding surface friction in excess of SRV 70 for accident-prone stretches, and colour surface treatment for bus, cycle and priority lanes, plus the sealant joint works that go with them.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-t border-aksb-text/10">
+                    <button data-faq-btn aria-expanded="false" class="group flex w-full items-baseline justify-between gap-6 py-6 text-left">
+                      <span data-faq-q class="font-display text-xl font-medium leading-snug transition-colors duration-300 md:text-2xl text-aksb-text group-hover:text-aksb-oxidized">How do I get a quotation?</span>
+                      <svg data-faq-icon xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus mt-1 flex-none self-start text-aksb-text/40 transition-transform duration-400 group-hover:text-aksb-oxidized"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                    <div data-faq-panel class="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" style="grid-template-rows:0fr">
+                      <div class="overflow-hidden">
+                        <p class="max-w-2xl pb-7 text-sm font-body leading-relaxed text-aksb-muted md:text-base">Send us the scope, location and any drawings or BQ you have — WhatsApp is fastest, email works too. Our contact person is Amrizal Aziz, and the form below reaches the same inbox.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ Closing CTA ============ -->
+        <section class="relative w-full overflow-hidden bg-aksb-dark">
+          <div class="pointer-events-none absolute inset-0 grain opacity-[0.05]"></div>
+          <div class="pointer-events-none absolute -top-32 right-[-10%] h-96 w-96 rounded-full opacity-25" style="background:radial-gradient(circle, rgba(166,75,41,0.55) 0%, transparent 65%)"></div>
+
+          <div class="mx-auto max-w-[1280px] px-6 py-24 text-center lg:px-10 lg:py-32">
+            <div data-reveal>
+              <p class="mb-5 text-xs font-body font-medium uppercase tracking-[0.2em] text-aksb-oxidized">
+                Ready When You Are
+              </p>
+              <h2 class="font-display text-5xl font-medium uppercase leading-[1.08] tracking-[0.01em] text-aksb-light md:text-6xl lg:text-7xl">
+                Let's Build
+                <br />
+                <span class="text-aksb-oxidized">Together</span>
+              </h2>
+              <p class="mx-auto mt-6 max-w-md text-base font-body leading-relaxed text-aksb-light/50">
+                Quality, precision and efficiency are our commitment to customers. Tell us about your
+                road, bridge or surfacing scope.
+              </p>
+            </div>
+
+            <div data-reveal style="--d:0.15s">
+              <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <button data-goto="contact" class="group inline-flex items-center gap-2 rounded-full bg-aksb-oxidized px-8 py-4 text-xs font-body font-semibold uppercase tracking-[0.14em] text-white transition-all duration-400 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(166,75,41,0.35)]">
+                  Send an enquiry
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right transition-transform duration-400 group-hover:rotate-45"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                </button>
+                <a href="https://wa.me/60193665892" target="_blank" rel="noreferrer" class="group inline-flex items-center gap-2 rounded-full border border-white/15 px-8 py-4 text-xs font-body font-semibold uppercase tracking-[0.14em] text-aksb-light transition-all duration-400 hover:border-aksb-oxidized hover:text-aksb-oxidized">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>
+                  WhatsApp +6019-366 5892
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- ============ Footer ============ -->
+      <footer class="relative overflow-hidden border-t border-white/5 bg-aksb-dark">
+        <div class="mx-auto max-w-[1280px] px-6 pb-10 pt-16 lg:px-10">
+          <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+            <div>
+              <button data-top class="block w-fit" aria-label="AKSB Global — back to top">
+                <img src="./images/logo-aksb-light.png" alt="AKSB Global" class="h-10 w-auto" />
+              </button>
+              <p class="mt-4 max-w-xs text-sm font-body leading-relaxed text-aksb-light/40">
+                Maintaining safer roads, delivering better infrastructure across Malaysia since 2018.
+              </p>
+            </div>
+
+            <nav class="flex flex-col gap-3">
+              <button data-goto="about" class="w-fit text-left text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-light/60 transition-colors duration-300 hover:text-aksb-oxidized">About</button>
+              <button data-goto="expertise" class="w-fit text-left text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-light/60 transition-colors duration-300 hover:text-aksb-oxidized">Expertise</button>
+              <button data-goto="projects" class="w-fit text-left text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-light/60 transition-colors duration-300 hover:text-aksb-oxidized">Projects</button>
+              <button data-goto="partners" class="w-fit text-left text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-light/60 transition-colors duration-300 hover:text-aksb-oxidized">Partners</button>
+              <button data-goto="certifications" class="w-fit text-left text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-light/60 transition-colors duration-300 hover:text-aksb-oxidized">Certifications</button>
+              <button data-goto="contact" class="w-fit text-left text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-light/60 transition-colors duration-300 hover:text-aksb-oxidized">Contact</button>
+            </nav>
+
+            <div class="max-w-xs text-sm font-body leading-relaxed text-aksb-light/40">
+              <p class="text-[11px] uppercase tracking-[0.14em] text-aksb-light/30">Head office</p>
+              <p class="mt-1">No. 7-G&amp;1, Jalan PPAJ 2/2, Pusat Perdagangan Alam Jaya, 42300 Bandar Puncak Alam, Selangor, Malaysia</p>
+              <p class="mt-4 text-[11px] uppercase tracking-[0.14em] text-aksb-light/30">
+                Johor branch
+              </p>
+              <p class="mt-1">2 PTD 28218, Jalan Tropika 12, Taman Bukit Tropika, 83700 Yong Peng, Batu Pahat, Johor</p>
+              <a href="mailto:aksbglobal@gmail.com" class="mt-3 block w-fit text-aksb-light/70 transition-colors duration-300 hover:text-aksb-oxidized">aksbglobal@gmail.com</a>
+              <a href="tel:+60360875923" class="mt-1 block w-fit text-aksb-light/70 transition-colors duration-300 hover:text-aksb-oxidized">+603-6087 5923</a>
+            </div>
+          </div>
+
+          <!-- oversized wordmark -->
+          <div aria-hidden="true" class="pointer-events-none mt-14 select-none overflow-hidden">
+            <p class="whitespace-nowrap text-center font-display text-[18vw] font-semibold uppercase leading-[0.85] tracking-[0.02em] text-aksb-light/[0.045] lg:text-[13rem]">
+              AKSB Global
+            </p>
+          </div>
+
+          <div class="mt-6 flex flex-col items-center justify-between gap-3 border-t border-white/5 pt-6 md:flex-row">
+            <p class="text-xs font-body text-aksb-light/30">
+              © <span data-year>2026</span> AKSB Global Sdn Bhd (1287934-H). All rights reserved.
+            </p>
+            <div class="flex items-center gap-4">
+              <span class="text-xs font-body text-aksb-light/30">CIDB G4 Contractor</span>
+              <span class="h-3 w-px bg-white/10"></span>
+              <span class="text-xs font-body text-aksb-light/30">Bumiputera Status</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./assets/lenis.min.js" defer></script>
+    <script src="./assets/site.js" defer></script>
   </body>
 </html>

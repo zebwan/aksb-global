@@ -1,0 +1,100 @@
+/* ============================================================
+   AKSB Global — state styles for the static build.
+   These replace what the React components previously set inline;
+   every duration, easing and delay matches the original 1:1.
+   Initial "hidden" states only apply when JS is running (html.js),
+   so the page stays fully readable without JavaScript.
+   ============================================================ */
+
+/* ---- Reveal (fade / slide-up on first view) ---- */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--y, 32px));
+  transition:
+    opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s),
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s);
+}
+.js [data-reveal].shown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- MaskImage (clip-path wipe + settle-down zoom) ---- */
+.js [data-mask] .mask-clip {
+  transition: clip-path 1.8s cubic-bezier(0.33, 0, 0.15, 1) var(--d, 0s);
+}
+.js [data-mask][data-dir="left"] .mask-clip  { clip-path: inset(0 100% 0 0); }
+.js [data-mask][data-dir="right"] .mask-clip { clip-path: inset(0 0 0 100%); }
+.js [data-mask][data-dir="up"] .mask-clip    { clip-path: inset(100% 0 0 0); }
+.js [data-mask] .mask-clip img {
+  transform: scale(1.15);
+  transition: transform 2.4s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s);
+}
+.js [data-mask].shown .mask-clip     { clip-path: inset(0 0 0 0); }
+.js [data-mask].shown .mask-clip img { transform: scale(1); }
+
+/* ---- BlurTitle initial state (JS drives the scroll-linked resolve) ---- */
+.js [data-blur-title] {
+  filter: blur(14px);
+  letter-spacing: 10px;
+  opacity: 0.25;
+  transition:
+    filter 0.45s ease-out,
+    letter-spacing 0.45s ease-out,
+    opacity 0.45s ease-out;
+  will-change: filter, letter-spacing;
+}
+
+/* ---- Hero load-in ---- */
+.js [data-hf] {
+  opacity: 0;
+  transform: translateY(var(--y, 20px));
+  transition: all var(--dur, 0.8s) var(--ease, ease) var(--d, 0s);
+}
+.js [data-hero].is-loaded [data-hf] {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* opacity-only variant (scroll indicator keeps its -translate-x-1/2) */
+.js [data-hf-o] {
+  opacity: 0;
+  transition: opacity var(--dur, 1s) var(--ease, ease) var(--d, 0s);
+}
+.js [data-hero].is-loaded [data-hf-o] {
+  opacity: 1;
+}
+/* hero tiles: staggered fade-in; hover scale is set inline by JS */
+.js .hero-tile {
+  opacity: 0;
+  transition:
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s,
+    opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+}
+.js [data-hero].is-loaded .hero-tile {
+  opacity: 1;
+  transition-delay: 0s, var(--td, 0s);
+}
+
+/* ---- Mobile menu items (staggered rise) ---- */
+.mob-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    transform 0.4s ease var(--d, 0s),
+    opacity 0.4s ease var(--d, 0s),
+    color 0.3s ease;
+}
+.mobile-open .mob-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Contact form scope radios (was React-controlled state) ---- */
+.scope-opt { color: #595959; }
+.scope-opt:hover { color: #1a1a1a; }
+.scope-opt:has(input:checked) { color: #1a1a1a; }
+.scope-dot { background-color: rgba(26, 26, 26, 0.25); }
+.scope-opt input:checked ~ .scope-dot {
+  transform: rotate(45deg) scale(1.25);
+  background-color: #a64b29;
+}
