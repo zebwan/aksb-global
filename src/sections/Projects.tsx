@@ -1,9 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router';
-import { ArrowRight } from 'lucide-react';
 import { PROJECTS } from '../data/site';
-
-const FEATURED = PROJECTS.slice(0, 4);
 
 export default function Projects() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -47,8 +43,8 @@ export default function Projects() {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative w-full bg-aksb-dark"
-      style={{ height: '280vh' }}
+      className="relative w-full scroll-mt-16 bg-aksb-dark"
+      style={{ height: '420vh' }}
     >
       <div className="sticky top-0 flex h-[100dvh] w-full flex-col overflow-hidden">
         {/* Section label */}
@@ -62,19 +58,15 @@ export default function Projects() {
             </h2>
           </div>
           <div className="hidden items-center gap-4 md:flex">
+            <span className="text-xs font-body uppercase tracking-[0.14em] text-aksb-light/50">
+              {PROJECTS.length} major projects
+            </span>
             <div className="relative h-px w-32 overflow-hidden bg-aksb-light/20">
               <div
                 className="absolute left-0 top-0 h-full bg-aksb-oxidized"
                 style={{ width: `${progress * 100}%` }}
               />
             </div>
-            <Link
-              to="/projects"
-              className="group inline-flex items-center gap-2 text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-light/70 transition-colors duration-300 hover:text-aksb-oxidized"
-            >
-              All projects
-              <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
           </div>
         </div>
 
@@ -88,13 +80,12 @@ export default function Projects() {
               willChange: 'transform',
             }}
           >
-            {FEATURED.map((project, i) => (
-              <Link
+            {PROJECTS.map((project, i) => (
+              <article
                 key={`${project.year}-${i}`}
-                to="/projects"
-                className="group relative w-[78vw] flex-shrink-0 cursor-pointer sm:w-[420px] md:w-[380px]"
+                className="group relative w-[78vw] flex-shrink-0 sm:w-[420px] md:w-[380px]"
               >
-                <div className="relative h-[42vh] overflow-hidden rounded-xl md:h-[50vh]">
+                <div className="relative h-[38vh] overflow-hidden rounded-xl md:h-[44vh]">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -108,39 +99,24 @@ export default function Projects() {
                   >
                     {project.year}
                   </span>
+                  <span className="absolute bottom-3 left-4 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-light/80">
+                    {project.scope}
+                  </span>
                   <div className="absolute bottom-0 left-0 h-1 w-0 bg-aksb-oxidized transition-all duration-500 ease-out group-hover:w-full" />
                 </div>
                 <div className="mt-5 px-1">
                   <p className="mb-1.5 text-[10px] font-body uppercase tracking-[0.15em] text-aksb-oxidized">
                     {project.client}
                   </p>
-                  <h3 className="font-display text-xl font-medium text-aksb-light transition-colors duration-300 group-hover:text-aksb-oxidized">
+                  <h3 className="font-display text-xl font-medium text-aksb-light">
                     {project.title}
                   </h3>
                   <p className="mt-2 text-sm font-body leading-relaxed text-aksb-light/50">
                     {project.desc}
                   </p>
                 </div>
-              </Link>
+              </article>
             ))}
-
-            {/* End card linking to the full list */}
-            <Link
-              to="/projects"
-              className="group relative flex w-[60vw] flex-shrink-0 items-center justify-center sm:w-[320px]"
-            >
-              <div className="flex h-[42vh] w-full flex-col items-center justify-center gap-4 rounded-xl border border-white/10 bg-white/[0.03] transition-colors duration-500 group-hover:border-aksb-oxidized/50 group-hover:bg-aksb-oxidized/10 md:h-[50vh]">
-                <span className="font-display text-2xl font-medium uppercase text-aksb-light">
-                  View all
-                </span>
-                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-aksb-light/20 text-aksb-light transition-all duration-500 group-hover:rotate-45 group-hover:border-aksb-oxidized group-hover:bg-aksb-oxidized">
-                  <ArrowRight size={18} />
-                </span>
-                <span className="text-xs font-body uppercase tracking-[0.15em] text-aksb-light/40">
-                  {PROJECTS.length} major projects
-                </span>
-              </div>
-            </Link>
           </div>
         </div>
 

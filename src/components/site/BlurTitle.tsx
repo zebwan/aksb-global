@@ -33,8 +33,9 @@ export default function BlurTitle({
       if (done.current) return;
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      // Starts as the title crosses 92% of the viewport, fully sharp by 58%.
-      const p = Math.max(0, Math.min(1, (vh * 0.92 - rect.top) / (vh * 0.34)));
+      // Starts as the title crosses 98% of the viewport, fully sharp by 43% —
+      // a long, gradual resolve so the text drifts into focus as you scroll.
+      const p = Math.max(0, Math.min(1, (vh * 0.98 - rect.top) / (vh * 0.55)));
       setProgress(p);
       if (p >= 1) {
         done.current = true;
@@ -54,7 +55,9 @@ export default function BlurTitle({
     };
   }, []);
 
-  const ease = 1 - Math.pow(1 - progress, 2);
+  // Smoothstep — eases in and out, so the title neither snaps sharp early
+  // nor lands abruptly at the end.
+  const ease = progress * progress * (3 - 2 * progress);
 
   return (
     <Tag
@@ -64,7 +67,8 @@ export default function BlurTitle({
         filter: ease >= 0.99 ? 'none' : `blur(${maxBlur * (1 - ease)}px)`,
         letterSpacing: `${maxSpacing * (1 - ease)}px`,
         opacity: 0.25 + ease * 0.75,
-        transition: 'filter 0.12s linear, letter-spacing 0.12s linear, opacity 0.12s linear',
+        transition:
+          'filter 0.45s ease-out, letter-spacing 0.45s ease-out, opacity 0.45s ease-out',
         willChange: 'filter, letter-spacing',
       }}
     >

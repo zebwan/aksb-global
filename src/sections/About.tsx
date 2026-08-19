@@ -39,8 +39,9 @@ export default function About() {
 
   return (
     <section
+      id="about"
       ref={sectionRef}
-      className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden scroll-mt-16"
     >
       {/* Dawn sky - pure CSS, GPU-accelerated */}
       <div
@@ -116,9 +117,11 @@ export default function About() {
           className="mt-6 text-base md:text-lg font-body text-aksb-light/70 leading-relaxed max-w-2xl mx-auto"
           style={{ textShadow: '0 1px 10px rgba(0,0,0,0.5)' }}
         >
-          Established in 2018, AKSB Global has rapidly become a preferred contractor
-          for leading highway concessionaires across Malaysia. Through smart partnerships
-          with international organizations, we deliver quality workmanship that stands the test of time.
+          Incorporated in July 2018 in Selangor as a CIDB-registered, Bumiputera-status company,
+          AKSB Global has built a reputation for quality workmanship, technical competence and
+          timely delivery with leading highway concessionaires and local authorities. Strategic
+          partnerships in Australia and the UK bring proven technologies and continuous knowledge
+          transfer into every scope we deliver.
         </p>
       </div>
     </section>

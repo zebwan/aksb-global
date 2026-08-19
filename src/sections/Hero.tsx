@@ -1,47 +1,43 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
+import { scrollToSection } from '../lib/scrollToSection';
 
 const HERO_TILES = [
   {
-    src: './images/hero1.jpg',
+    src: './images/cst-bus-lane.jpg',
+    label: 'Colour Surface Treatment',
+    caption: 'Bus, cycle & priority lanes',
+    target: 'surface-treatment',
+  },
+  {
+    src: './images/joint-elastomeric.jpg',
+    label: 'Bridge Expansion Joints',
+    caption: 'Supply, replace & deck repair',
+    target: 'bridge-expansion-joint',
+  },
+  {
+    src: './images/hfst-roundabout.jpg',
+    label: 'Anti-Skid Surfacing',
+    caption: 'Friction in excess of SRV 70',
+    target: 'surface-treatment',
+  },
+  {
+    src: './images/crack-roadflex.jpg',
+    label: 'Road Crack Repair',
+    caption: 'Roadflex H & Techscreed',
+    target: 'crack-repair',
+  },
+  {
+    src: './images/joint-asphaltic-plug.jpg',
     label: 'Highway Projects',
     caption: 'Live works for concessionaires',
-    to: '/projects',
+    target: 'projects',
   },
   {
-    src: './images/hero2.jpg',
-    label: 'Bridge Expansion Joints',
-    caption: 'Supply, replace & repair',
-    to: '/expertise',
-    anchor: 'bridge-expansion-joint',
-  },
-  {
-    src: './images/hero3.jpg',
-    label: 'Colour Surface Treatment',
-    caption: 'CST for lanes that need reading',
-    to: '/expertise',
-    anchor: 'pavement',
-  },
-  {
-    src: './images/hero4.jpg',
+    src: './images/cst-carriageway.jpg',
     label: 'Technology Partners',
-    caption: 'HFST with Omnigrip Direct',
-    to: '/partners',
-  },
-  {
-    src: './images/hero5.jpg',
-    label: 'Civil & Structure',
-    caption: 'Slope protection & fencing',
-    to: '/expertise',
-    anchor: 'civil-structure',
-  },
-  {
-    src: './images/hero6.jpg',
-    label: 'Road Furniture',
-    caption: 'Marking, signage & studs',
-    to: '/expertise',
-    anchor: 'road-furniture',
+    caption: 'Surfacing systems from Australia & the UK',
+    target: 'partners',
   },
 ];
 
@@ -59,11 +55,10 @@ function HeroTile({
   setHoveredIndex: (i: number | null) => void;
 }) {
   return (
-    <Link
-      to={tile.to}
-      state={tile.anchor ? { anchor: tile.anchor } : undefined}
+    <button
+      onClick={() => scrollToSection(tile.target)}
       aria-label={tile.label}
-      className="group relative block aspect-[4/3] overflow-hidden rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full"
+      className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-aksb-oxidized md:aspect-auto md:h-full"
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
       style={{
@@ -114,7 +109,7 @@ function HeroTile({
           </span>
         </div>
       </div>
-    </Link>
+    </button>
   );
 }
 
@@ -203,8 +198,8 @@ export default function Hero() {
             transition: 'all 0.8s ease 1.05s',
           }}
         >
-          <Link
-            to="/contact"
+          <button
+            onClick={() => scrollToSection('contact')}
             className="group inline-flex items-center gap-2 rounded-full border border-aksb-light/25 bg-aksb-dark/40 px-6 py-3 text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-light backdrop-blur-sm transition-all duration-400 hover:border-aksb-oxidized hover:bg-aksb-oxidized"
           >
             Start a project
@@ -212,7 +207,7 @@ export default function Hero() {
               size={14}
               className="transition-transform duration-400 group-hover:rotate-45"
             />
-          </Link>
+          </button>
         </div>
       </div>
 

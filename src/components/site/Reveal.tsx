@@ -16,7 +16,7 @@ export default function Reveal({
   y = 32,
   className,
   style,
-  threshold = 0.15,
+  threshold = 0.1,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
@@ -31,7 +31,7 @@ export default function Reveal({
           observer.unobserve(el);
         }
       },
-      { threshold, rootMargin: '0px 0px -5% 0px' }
+      { threshold, rootMargin: '0px 0px -2% 0px' }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -45,7 +45,7 @@ export default function Reveal({
         ...style,
         opacity: shown ? 1 : 0,
         transform: shown ? 'translateY(0)' : `translateY(${y}px)`,
-        transition: `opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
+        transition: `opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
       }}
     >
       {children}

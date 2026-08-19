@@ -35,7 +35,8 @@ export default function MaskImage({
           observer.unobserve(el);
         }
       },
-      { threshold: 0.2 }
+      // fires early so the slower wipe has room to finish as the image settles
+      { threshold: 0.08 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -54,7 +55,7 @@ export default function MaskImage({
         className="h-full w-full overflow-hidden rounded-[inherit]"
         style={{
           clipPath: shown ? 'inset(0 0 0 0)' : hiddenClip,
-          transition: `clip-path 1.1s cubic-bezier(0.65, 0, 0.35, 1) ${delay}s`,
+          transition: `clip-path 1.8s cubic-bezier(0.33, 0, 0.15, 1) ${delay}s`,
         }}
       >
         <img
@@ -64,7 +65,7 @@ export default function MaskImage({
           className={`h-full w-full object-cover ${imgClassName}`}
           style={{
             transform: shown ? 'scale(1)' : 'scale(1.15)',
-            transition: `transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
+            transition: `transform 2.4s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
           }}
         />
       </div>

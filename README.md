@@ -1,8 +1,20 @@
-# AKSB Global Sdn Bhd — Corporate Website
+# AKSB Global Sdn Bhd — Landing Page
 
-Multi-page corporate site for AKSB Global Sdn Bhd (CIDB G4 civil engineering contractor, Puncak Alam, Selangor): road furniture, pavement treatment, civil & structure works and bridge expansion joints.
+Single-page site for AKSB Global Sdn Bhd (CIDB G4 road maintenance contractor, Bandar Puncak Alam,
+Selangor, with a branch in Yong Peng, Johor).
 
-Built with React 19, Vite, Tailwind CSS and Lenis smooth scrolling. Pages: Home, Projects, Expertise, Partners, Contact (hash routing, static-host friendly). Contact page includes a no-backend enquiry form (composes an email) and an FAQ.
+Everything lives on one scrolling page, with the header, hero tiles and footer all deep-linking to
+in-page sections:
+
+Hero → About → Expertise (five scopes) → Why AKSB → Projects → Partners & Clients →
+Certifications → Contact → FAQ → Closing CTA
+
+Built with React 19, Vite, Tailwind CSS and Lenis smooth scrolling. No router and no backend — the
+enquiry form composes an email, so it deploys as plain static files.
+
+All site photography is supplied by the client. Provenance, the images that were rejected and why,
+the logo sources and the facts still awaiting client confirmation are documented in
+[CONTENT-NOTES.md](CONTENT-NOTES.md).
 
 ## Develop
 
@@ -19,6 +31,7 @@ npm run build   # outputs to dist/
 
 ## Deploy
 
-Pushing to `main` triggers the GitHub Actions workflow that builds and publishes to GitHub Pages. In the repo settings, set **Pages → Source → GitHub Actions** once to activate it.
+Pushing to `main` triggers the GitHub Actions workflow that builds and publishes to GitHub Pages.
+In the repo settings, set **Pages → Source → GitHub Actions** once to activate it.
 
-Content is sourced from the AKSB Global company profile (2026).
+Content is sourced from the AKSB Global company profile and brochure (2026).

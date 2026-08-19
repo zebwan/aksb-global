@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router';
 import { Menu, X } from 'lucide-react';
+import { CONTACT } from '../data/site';
+import { scrollToSection, scrollToTop } from '../lib/scrollToSection';
 
 const NAV_LINKS = [
-  { label: 'Projects', to: '/projects' },
-  { label: 'Expertise', to: '/expertise' },
-  { label: 'Partners', to: '/partners' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'About', id: 'about' },
+  { label: 'Expertise', id: 'expertise' },
+  { label: 'Projects', id: 'projects' },
+  { label: 'Partners', id: 'partners' },
+  { label: 'Contact', id: 'contact' },
 ];
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const location = useLocation();
+  const [active, setActive] = useState<string>('');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -21,10 +23,23 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // close the overlay whenever the route changes
+  // highlight whichever section currently owns the upper third of the viewport
   useEffect(() => {
-    setMobileOpen(false);
-  }, [location.pathname]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: '-15% 0px -70% 0px' }
+    );
+    NAV_LINKS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
@@ -32,6 +47,12 @@ export default function Navigation() {
       document.body.style.overflow = '';
     };
   }, [mobileOpen]);
+
+  const go = (id: string) => {
+    setMobileOpen(false);
+    // let the overlay close before the scroll starts
+    requestAnimationFrame(() => scrollToSection(id));
+  };
 
   return (
     <>
@@ -43,37 +64,35 @@ export default function Navigation() {
         }`}
       >
         <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 lg:h-20 lg:px-10">
-          <Link
-            to="/"
-            className="group relative z-50 flex items-center gap-2.5 font-display text-lg font-semibold uppercase tracking-[0.08em] text-aksb-light lg:text-xl"
+          <button
+            onClick={scrollToTop}
+            className="group relative z-50 flex items-center"
+            aria-label="AKSB Global — back to top"
           >
-            <span className="block h-2 w-2 rounded-full bg-aksb-oxidized transition-transform duration-500 group-hover:scale-125" />
-            AKSB Global
-          </Link>
+            <img
+              src="./images/logo-aksb-light.png"
+              alt="AKSB Global"
+              className="h-8 w-auto transition-transform duration-500 group-hover:scale-[1.04] lg:h-9"
+            />
+          </button>
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 md:flex">
             {NAV_LINKS.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                className={({ isActive }) =>
-                  `group relative text-xs font-body font-medium uppercase tracking-[0.12em] transition-colors duration-300 ${
-                    isActive ? 'text-aksb-light' : 'text-aksb-light/70 hover:text-aksb-light'
-                  }`
-                }
+              <button
+                key={link.id}
+                onClick={() => go(link.id)}
+                className={`group relative text-xs font-body font-medium uppercase tracking-[0.12em] transition-colors duration-300 ${
+                  active === link.id ? 'text-aksb-light' : 'text-aksb-light/70 hover:text-aksb-light'
+                }`}
               >
-                {({ isActive }) => (
-                  <>
-                    {link.label}
-                    <span
-                      className={`absolute -bottom-1 left-0 h-px bg-aksb-oxidized transition-all duration-300 ${
-                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`}
-                    />
-                  </>
-                )}
-              </NavLink>
+                {link.label}
+                <span
+                  className={`absolute -bottom-1 left-0 h-px bg-aksb-oxidized transition-all duration-300 ${
+                    active === link.id ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
+              </button>
             ))}
           </nav>
 
@@ -97,14 +116,10 @@ export default function Navigation() {
       >
         <nav className="flex h-full flex-col items-center justify-center gap-8">
           {NAV_LINKS.map((link, i) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `font-display text-3xl font-medium uppercase tracking-[0.06em] transition-colors duration-300 ${
-                  isActive ? 'text-aksb-oxidized' : 'text-aksb-light/80 hover:text-aksb-oxidized'
-                }`
-              }
+            <button
+              key={link.id}
+              onClick={() => go(link.id)}
+              className="font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized"
               style={{
                 transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)',
                 opacity: mobileOpen ? 1 : 0,
@@ -112,17 +127,17 @@ export default function Navigation() {
               }}
             >
               {link.label}
-            </NavLink>
+            </button>
           ))}
           <a
-            href="https://wa.me/60193665892"
+            href={CONTACT.whatsappUrl}
             target="_blank"
             rel="noreferrer"
             className="mt-4 rounded-full border border-aksb-oxidized/50 px-6 py-2.5 text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-oxidized"
             style={{
               transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)',
               opacity: mobileOpen ? 1 : 0,
-              transition: `transform 0.4s ease 0.32s, opacity 0.4s ease 0.32s`,
+              transition: `transform 0.4s ease 0.4s, opacity 0.4s ease 0.4s`,
             }}
           >
             WhatsApp Us

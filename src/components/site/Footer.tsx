@@ -1,11 +1,13 @@
-import { Link } from 'react-router';
 import { CONTACT } from '../../data/site';
+import { scrollToSection, scrollToTop } from '../../lib/scrollToSection';
 
 const FOOTER_LINKS = [
-  { label: 'Projects', to: '/projects' },
-  { label: 'Expertise', to: '/expertise' },
-  { label: 'Partners', to: '/partners' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'About', id: 'about' },
+  { label: 'Expertise', id: 'expertise' },
+  { label: 'Projects', id: 'projects' },
+  { label: 'Partners', id: 'partners' },
+  { label: 'Certifications', id: 'certifications' },
+  { label: 'Contact', id: 'contact' },
 ];
 
 export default function Footer() {
@@ -14,31 +16,33 @@ export default function Footer() {
       <div className="mx-auto max-w-[1280px] px-6 pb-10 pt-16 lg:px-10">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
-            <Link
-              to="/"
-              className="font-display text-2xl font-semibold uppercase tracking-[0.08em] text-aksb-light"
-            >
-              AKSB Global
-            </Link>
-            <p className="mt-3 max-w-xs text-sm font-body leading-relaxed text-aksb-light/40">
-              Building safer roads, delivering better infrastructure across Malaysia since 2018.
+            <button onClick={scrollToTop} className="block w-fit" aria-label="AKSB Global — back to top">
+              <img src="./images/logo-aksb-light.png" alt="AKSB Global" className="h-10 w-auto" />
+            </button>
+            <p className="mt-4 max-w-xs text-sm font-body leading-relaxed text-aksb-light/40">
+              Maintaining safer roads, delivering better infrastructure across Malaysia since 2018.
             </p>
           </div>
 
           <nav className="flex flex-col gap-3">
             {FOOTER_LINKS.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="w-fit text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-light/60 transition-colors duration-300 hover:text-aksb-oxidized"
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className="w-fit text-left text-xs font-body font-medium uppercase tracking-[0.14em] text-aksb-light/60 transition-colors duration-300 hover:text-aksb-oxidized"
               >
                 {link.label}
-              </Link>
+              </button>
             ))}
           </nav>
 
           <div className="max-w-xs text-sm font-body leading-relaxed text-aksb-light/40">
-            <p>{CONTACT.address}</p>
+            <p className="text-[11px] uppercase tracking-[0.14em] text-aksb-light/30">Head office</p>
+            <p className="mt-1">{CONTACT.address}</p>
+            <p className="mt-4 text-[11px] uppercase tracking-[0.14em] text-aksb-light/30">
+              Johor branch
+            </p>
+            <p className="mt-1">{CONTACT.johorAddress}</p>
             <a
               href={`mailto:${CONTACT.email}`}
               className="mt-3 block w-fit text-aksb-light/70 transition-colors duration-300 hover:text-aksb-oxidized"
