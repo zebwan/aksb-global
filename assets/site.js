@@ -41,16 +41,8 @@
   /* ---------- Navigation: scrolled state ---------- */
   var header = $('[data-nav]');
   var mobileOpen = false;
-  var SCROLLED_CLASSES = ['border-b', 'border-white/5', 'bg-aksb-dark/80', 'backdrop-blur-md'];
   function updateHeader() {
-    var scrolled = window.scrollY > 50;
-    if (scrolled && !mobileOpen) {
-      SCROLLED_CLASSES.forEach(function (c) { header.classList.add(c); });
-      header.classList.remove('bg-transparent');
-    } else {
-      SCROLLED_CLASSES.forEach(function (c) { header.classList.remove(c); });
-      header.classList.add('bg-transparent');
-    }
+    header.classList.toggle('nav-scrolled', window.scrollY > 50);
   }
 
   /* ---------- Navigation: active-section highlight ---------- */
@@ -90,6 +82,7 @@
   var iconX = $('[data-icon-x]');
   function setMobileOpen(open) {
     mobileOpen = open;
+    header.classList.toggle('menu-open', open);
     menuBtn.setAttribute('aria-expanded', String(open));
     iconMenu.classList.toggle('hidden', open);
     iconX.classList.toggle('hidden', !open);
@@ -182,14 +175,63 @@
     });
   }
 
-  /* ---------- About: scroll-linked dawn sky ---------- */
+  /* ---------- About: pinned dawn scene with scroll-scrubbed copy ---------- */
   var about = $('[data-about]');
-  var sky = $('[data-sky]'), sun = $('[data-sun]'), fog = $('[data-fog]'), aboutText = $('[data-about-text]');
+  var sky = $('[data-sky]'), sun = $('[data-sun]'), fog = $('[data-fog]');
+  var aboutEyebrow = $('[data-about-eyebrow]');
+
+  /* Split the title into letters (word-wrapped so lines break naturally) and
+     the paragraph into words, so scroll progress can drive them one by one. */
+  function splitLetters(root) {
+    var letters = [];
+    function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var word = document.createElement('span');
+            word.style.display = 'inline-block';
+            word.style.whiteSpace = 'nowrap';
+            part.split('').forEach(function (ch) {
+              var s = document.createElement('span');
+              s.textContent = ch;
+              s.style.display = 'inline-block';
+              letters.push(s);
+              word.appendChild(s);
+            });
+            frag.appendChild(word);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) {
+          walk(child);
+        }
+      });
+    }
+    walk(root);
+    return letters;
+  }
+  function splitWords(root) {
+    var words = [];
+    var text = root.textContent.replace(/\s+/g, ' ').trim();
+    root.textContent = '';
+    text.split(' ').forEach(function (w, i) {
+      if (i) root.appendChild(document.createTextNode(' '));
+      var s = document.createElement('span');
+      s.textContent = w;
+      words.push(s);
+      root.appendChild(s);
+    });
+    return words;
+  }
+  var titleLetters = splitLetters($('[data-about-title]'));
+  var scrubWords = splitWords($('[data-about-scrub]'));
+
   function updateAbout() {
     var rect = about.getBoundingClientRect();
-    var windowH = window.innerHeight;
-    var raw = (windowH - rect.top) / (windowH + rect.height);
-    var progress = clamp(raw, 0, 1);
+    var pinRange = rect.height - window.innerHeight;
+    var progress = pinRange > 0 ? clamp(-rect.top / pinRange, 0, 1) : 0;
 
     sky.style.background =
       'linear-gradient(to bottom, ' +
@@ -214,10 +256,25 @@
       'rgba(180, 160, 140, ' + (0.4 * progress) + ') 40%, ' +
       'transparent 100%)';
 
-    // Fade in early, stay fully readable for most of the section, ease out late.
-    var textOpacity = Math.max(0, Math.min(1, (progress - 0.16) * 6, (0.92 - progress) * 8));
-    aboutText.style.opacity = textOpacity;
-    aboutText.style.transform = 'translateY(' + (1 - textOpacity) * 30 + 'px)';
+    aboutEyebrow.style.opacity = clamp(progress / 0.05, 0, 1);
+
+    // title letters cascade in across the first third of the pin
+    var lp = clamp((progress - 0.03) / 0.3, 0, 1);
+    var M = titleLetters.length;
+    titleLetters.forEach(function (s, i) {
+      var t = clamp((lp * (M + 10) - i) / 10, 0, 1);
+      s.style.opacity = 0.08 + 0.92 * t;
+      s.style.transform = 'translateY(' + (1 - t) * 18 + 'px)';
+      s.style.filter = t >= 1 ? 'none' : 'blur(' + (1 - t) * 5 + 'px)';
+    });
+
+    // paragraph words light up one by one across the rest of the pin
+    var wp = clamp((progress - 0.34) / 0.5, 0, 1);
+    var W = scrubWords.length;
+    scrubWords.forEach(function (s, i) {
+      var t = clamp(wp * (W + 4) - i, 0, 1);
+      s.style.opacity = 0.13 + 0.87 * t;
+    });
   }
 
   /* ---------- Projects: sticky horizontal scroll ---------- */

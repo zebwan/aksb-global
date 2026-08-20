@@ -17,14 +17,14 @@
     <div class="relative">
 
       <!-- ============ Navigation ============ -->
-      <header data-nav class="fixed left-0 right-0 top-0 z-50 transition-all duration-500 bg-transparent">
+      <header data-nav class="fixed left-0 right-0 top-0 z-50">
         <div class="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 lg:h-20 lg:px-10">
-          <button data-top class="group relative z-50 flex items-center" aria-label="AKSB Global — back to top">
+          <button data-top class="nav-logo group relative z-50 flex items-center" aria-label="AKSB Global — back to top">
             <img src="./images/logo-aksb-light.png" alt="AKSB Global" class="h-8 w-auto transition-transform duration-500 group-hover:scale-[1.04] lg:h-9" />
           </button>
 
           <!-- Desktop nav -->
-          <nav class="hidden items-center gap-8 md:flex">
+          <nav class="nav-links hidden items-center gap-8 md:flex">
             <button data-goto="about" data-navlink class="group relative text-xs font-body font-medium uppercase tracking-[0.12em] transition-colors duration-300 text-aksb-light/70 hover:text-aksb-light">
               About
               <span data-underline class="absolute -bottom-1 left-0 h-px bg-aksb-oxidized transition-all duration-300 w-0 group-hover:w-full"></span>
@@ -48,7 +48,7 @@
           </nav>
 
           <!-- Mobile menu button -->
-          <button data-menu-btn class="relative z-50 p-2 text-aksb-light md:hidden" aria-label="Toggle menu" aria-expanded="false">
+          <button data-menu-btn class="nav-burger relative z-50 flex items-center justify-center text-aksb-light" aria-label="Toggle menu" aria-expanded="false">
             <svg data-icon-menu xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
             <svg data-icon-x xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x hidden"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
           </button>
@@ -56,13 +56,13 @@
       </header>
 
       <!-- Mobile overlay -->
-      <div data-mobile-overlay class="fixed inset-0 z-40 bg-aksb-dark/95 backdrop-blur-xl transition-all duration-500 md:hidden pointer-events-none opacity-0">
+      <div data-mobile-overlay class="fixed inset-0 z-40 bg-aksb-dark/95 backdrop-blur-xl transition-all duration-500 pointer-events-none opacity-0">
         <nav class="flex h-full flex-col items-center justify-center gap-8">
-          <button data-goto="about" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized" style="--d:0s">About</button>
-          <button data-goto="expertise" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized" style="--d:0.08s">Expertise</button>
-          <button data-goto="projects" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized" style="--d:0.16s">Projects</button>
-          <button data-goto="partners" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized" style="--d:0.24s">Partners</button>
-          <button data-goto="contact" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized" style="--d:0.32s">Contact</button>
+          <button data-goto="about" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized md:text-5xl" style="--d:0s">About</button>
+          <button data-goto="expertise" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized md:text-5xl" style="--d:0.08s">Expertise</button>
+          <button data-goto="projects" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized md:text-5xl" style="--d:0.16s">Projects</button>
+          <button data-goto="partners" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized md:text-5xl" style="--d:0.24s">Partners</button>
+          <button data-goto="contact" class="mob-item font-display text-3xl font-medium uppercase tracking-[0.06em] text-aksb-light/80 transition-colors duration-300 hover:text-aksb-oxidized md:text-5xl" style="--d:0.32s">Contact</button>
           <a href="https://wa.me/60193665892" target="_blank" rel="noreferrer" class="mob-item btn btn-ghost btn-sm mt-4" style="--d:0.4s">WhatsApp us</a>
         </nav>
       </div>
@@ -308,35 +308,33 @@
 
         </section>
 
-        <!-- ============ About ============ -->
-        <section id="about" data-about class="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden scroll-mt-16">
-          <!-- Dawn sky - pure CSS, GPU-accelerated -->
-          <div data-sky class="absolute inset-0 transition-colors duration-1000" style="background:linear-gradient(to bottom, rgb(1, 1, 2) 0%, rgb(5, 5, 7) 40%, rgb(8, 4, 5) 70%, rgb(3, 2, 3) 100%)"></div>
+        <!-- ============ About (pinned dawn scene, scroll-scrubbed copy) ============ -->
+        <section id="about" data-about class="relative w-full scroll-mt-16" style="height:260vh">
+          <div class="sticky top-0 flex h-[100dvh] w-full items-center justify-center overflow-hidden">
+            <!-- Dawn sky - pure CSS, GPU-accelerated -->
+            <div data-sky class="absolute inset-0 transition-colors duration-1000" style="background:linear-gradient(to bottom, rgb(1, 1, 2) 0%, rgb(5, 5, 7) 40%, rgb(8, 4, 5) 70%, rgb(3, 2, 3) 100%)"></div>
 
-          <!-- Sun -->
-          <div data-sun class="absolute rounded-full pointer-events-none" style="width:80px;height:80px;left:50%;top:45%;transform:translate(-50%, -50%);background:radial-gradient(circle, rgba(255, 255, 150, 0) 0%, rgba(255, 150, 100, 0) 40%, transparent 70%);opacity:0;transition:opacity 0.3s ease"></div>
+            <!-- Sun -->
+            <div data-sun class="absolute rounded-full pointer-events-none" style="width:80px;height:80px;left:50%;top:45%;transform:translate(-50%, -50%);background:radial-gradient(circle, rgba(255, 255, 150, 0) 0%, rgba(255, 150, 100, 0) 40%, transparent 70%);opacity:0;transition:opacity 0.3s ease"></div>
 
-          <!-- Fog layer -->
-          <div data-fog class="absolute bottom-0 left-0 right-0 pointer-events-none" style="height:45%;background:linear-gradient(to top, rgba(210, 190, 165, 0) 0%, rgba(180, 160, 140, 0) 40%, transparent 100%);transition:all 0.5s ease"></div>
+            <!-- Fog layer -->
+            <div data-fog class="absolute bottom-0 left-0 right-0 pointer-events-none" style="height:45%;background:linear-gradient(to top, rgba(210, 190, 165, 0) 0%, rgba(180, 160, 140, 0) 40%, transparent 100%);transition:all 0.5s ease"></div>
 
-          <!-- Noise texture overlay - subtle -->
-          <div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);background-size:128px 128px"></div>
+            <!-- Noise texture overlay - subtle -->
+            <div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);background-size:128px 128px"></div>
 
-          <!-- Content -->
-          <div data-about-text class="relative z-10 max-w-3xl mx-auto px-6 text-center" style="opacity:0;transform:translateY(30px);transition:opacity 0.2s ease-out">
-            <p class="text-xs font-body font-medium text-aksb-oxidized mb-6">
-              About us
-            </p>
-            <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.15] tracking-[0.01em] text-aksb-light" style="text-shadow:0 2px 20px rgba(0,0,0,0.6)">
-              We specialize in the critical details of national infrastructure
-            </h2>
-            <p class="mt-6 text-base md:text-lg font-body text-aksb-light/70 leading-relaxed max-w-2xl mx-auto" style="text-shadow:0 1px 10px rgba(0,0,0,0.5)">
-              Incorporated in July 2018 in Selangor as a CIDB-registered, Bumiputera-status company,
-              AKSB Global has built a reputation for quality workmanship, technical competence and
-              timely delivery with leading highway concessionaires and local authorities. Strategic
-              partnerships in Australia and the UK bring proven technologies and continuous knowledge
-              transfer into every scope we deliver.
-            </p>
+            <!-- Content -->
+            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+              <p data-about-eyebrow class="text-sm font-body font-medium text-aksb-oxidized mb-6" style="opacity:0">
+                About us
+              </p>
+              <h2 data-about-title class="about-title font-display font-semibold uppercase tracking-[0.02em] text-aksb-light" style="text-shadow:0 2px 20px rgba(0,0,0,0.6)">
+                We specialize in the <span class="text-aksb-oxidized">critical details</span> of national infrastructure
+              </h2>
+              <p data-about-scrub class="about-scrub mx-auto mt-8 max-w-3xl font-body font-medium text-aksb-light" style="text-shadow:0 1px 10px rgba(0,0,0,0.5)">
+                Incorporated in July 2018 in Selangor as a CIDB-registered, Bumiputera-status company, AKSB Global has built a reputation for quality workmanship, technical competence and timely delivery with leading highway concessionaires and local authorities. Strategic partnerships in Australia and the UK bring proven technologies and continuous knowledge transfer into every scope we deliver.
+              </p>
+            </div>
           </div>
         </section>
 

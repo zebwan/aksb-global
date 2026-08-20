@@ -67,6 +67,63 @@
   transition-delay: 0s, var(--td, 0s);
 }
 
+/* ---- Header: transparent bar; the menu collapses to a floating hamburger ----
+   States set by JS on <header>: .nav-scrolled (scrollY > 50), .menu-open. */
+[data-nav] .nav-logo,
+[data-nav] .nav-links {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+[data-nav].nav-scrolled:not(.menu-open) .nav-logo {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+[data-nav].menu-open .nav-links {
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-burger {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+/* once scrolled, the button becomes a dark chip so it reads on light sections */
+[data-nav].nav-scrolled .nav-burger {
+  background: #0d0d0d;
+  border-color: rgba(242, 242, 242, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+@media (min-width: 768px) {
+  /* desktop: inline links at the top of the page, hamburger once scrolled */
+  [data-nav].nav-scrolled:not(.menu-open) .nav-links {
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+  }
+  [data-nav]:not(.nav-scrolled):not(.menu-open) .nav-burger {
+    opacity: 0;
+    transform: scale(0.85);
+    pointer-events: none;
+  }
+}
+
+/* ---- About: pinned dawn scene, scroll-scrubbed copy ---- */
+.about-title {
+  font-size: clamp(2.3rem, 4.2vw + 0.9rem, 4.35rem);
+  line-height: 1.08;
+}
+.about-scrub {
+  font-size: clamp(1.1rem, 1.05vw + 0.78rem, 1.6rem);
+  line-height: 1.55;
+}
+
 /* ---- Hero headline: outlined word ---- */
 .hero-outline {
   color: rgba(242, 242, 242, 0.55); /* fallback when text-stroke is unsupported */
