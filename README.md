@@ -1,4 +1,4 @@
-# AKSB Global — corporate site
+# AKSB Global — corporate site (v2, fluid.glass-style rebuild)
 
 Single-page corporate site for **AKSB Global Sdn Bhd** (road maintenance contractor,
 Puncak Alam, Selangor · CIDB G4 Bumiputera · 1287934-H).
@@ -6,7 +6,18 @@ Puncak Alam, Selangor · CIDB G4 Bumiputera · 1287934-H).
 Live at **https://zebwan.github.io/aksb-global/** — deploys automatically on every
 push to `main` via GitHub Actions (no build step).
 
-## Stack
+## v2 (16 Sep 2026)
+
+The site was rebuilt on the motion grammar of fluid.glass (GSAP 3.13 + ScrollTrigger + SplitText +
+DrawSVG, Lenis) with the client-approved v1 copy. See `TEMPLATE-TEARDOWN.md` for every measured
+value. Files: `index.html`, `css/site.css`, `js/site.js`, `vendor/`, `images/`. The v1 static site
+and the earlier React app remain in git history.
+
+Enquiry forms post to FormSubmit (`https://formsubmit.co/ajax/aksbglobal@gmail.com`) with a mailto
+fallback. **The first real submission triggers a one-time activation email to aksbglobal@gmail.com
+that must be confirmed before enquiries are delivered.**
+
+## Stack (v1, historical)
 
 Plain static **HTML + CSS + vanilla JS**. No framework, no build step, no Node.
 

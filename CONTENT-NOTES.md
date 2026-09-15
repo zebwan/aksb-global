@@ -1,5 +1,12 @@
 # AKSB Global — content & asset notes
 
+> **16 Sep 2026: v2 rebuild is live** (fluid.glass motion system, approved v1 copy). Photo notes:
+> four soft frames were replaced by sharper ones from the same WhatsApp batch after a Laplacian
+> sharpness pass on all 58 files (finished asphaltic plug, both portrait crops, compactor). Still weak
+> but kept for lack of alternatives: `furniture-flexible-posts.jpg` (1000×496, only flexible-post photo).
+> Two-row client marquee, navy tint on all photos (hover reveals colour), FormSubmit enquiry form
+> (needs one-time activation at aksbglobal@gmail.com).
+
 > **15 Sep 2026 amendment round** (from Shazwan's client-meeting notes of 11 Sep + Intan's WhatsApp batch):
 >
 > - **Photos:** 20 new site photos from Intan (Friday 11 Sep WhatsApp batch) are live — gabion walls for
