@@ -1,5 +1,36 @@
 # AKSB Global — content & asset notes
 
+> **15 Sep 2026 amendment round** (from Shazwan's client-meeting notes of 11 Sep + Intan's WhatsApp batch):
+>
+> - **Photos:** 20 new site photos from Intan (Friday 11 Sep WhatsApp batch) are live — gabion walls for
+>   Civil & Structure, a full elastomeric / asphaltic plug set for Bridge Expansion Joint, TnG toll-plaza
+>   marking, a zebra crossing and red flexible posts for Road Furniture, one HFST laying shot. Camera
+>   timestamp stamps were cropped off (top 10% or bottom 12%). All four corners of all 58 supplied files
+>   were checked for the Gemini sparkle watermark: **none present**. Still no photo for Reclamite,
+>   Techscreed, sealant joint, fencing or signage. Skipped: 5 files under 350px, the +36 gallery duplicates.
+> - **Photo-source rule relaxed by the client** (11 Sep): stock/online images are now allowed for scopes
+>   with no photo. Not needed this round — every scope now has real AKSB photography.
+> - **Certificates:** six cert PDFs from Intan rendered as 4:5 cards (`images/cert-*.jpg`) in an
+>   auto-moving slider. **Staff IC numbers were redacted** before rendering (CIDB SPKK ×4, JCCD ×1, DBKL ×1);
+>   the company number 201801025913 was kept. Cert dates on the page now come from the certs themselves:
+>   CIDB SPKK 15 Jul 2026 – 14 Jul 2029 · CIDB PPK 5 Jul 2026 – 14 Jul 2029 · UEM Edgenta 8 Aug 2024 – 7 Aug 2029 ·
+>   JCCD 10 Feb 2026 – 9 Feb 2027 · FGV 21 Jan 2025 – 21 Jan 2028 · DBKL 12 Feb 2026 – 12 Feb 2027.
+> - **Road Furniture is four items again**, matching the 2026 company profile (line marking with its
+>   AWT / normal thermoplastic / rumble-strip variants, signage, road stud, flexible post).
+> - **Scope order** is now 01 Road Furniture · 02 Road Surface Treatment & Anti-skid (retitled) ·
+>   03 Bridge Expansion Joint · 04 Road Crack Repair System · 05 Civil & Structure.
+> - **Achievements** moved up to a dark band directly after About.
+> - **Client logo wall** is an auto-moving slider; **LATAR logo added** (real file from latar.com.my, 103×167 —
+>   small but sharp at display size). **Bina Masyhur still has no logo** — nothing online (binamasyhur.com.my
+>   serves the SELIA Group site) and the only "BM" mark in the 2026 profile deck is AI-drawn, so it stays a
+>   wordmark. Ask Intan for the file.
+> - **Contact:** contact person removed everywhere; WhatsApp / mobile is now **+6011-6550 5892**
+>   (`wa.me/601165505892`). The +603-6087 5923 landline from the PDFs was kept as a second line — confirm.
+> - **Projects:** cards now carry eight different real photos and the dark tint is gone. **Intan will send the
+>   project list (no photos)** — replace the current eight entries when it arrives.
+> - **Still waiting on Intan:** Why AKSB section content/images/titles (redesign parked), Bina Masyhur logo,
+>   project list.
+
 > **Stack note (20 Aug 2026):** the site was converted from a React/Vite app to plain
 > static HTML/CSS/JS, looks and behaviour unchanged. All copy now lives directly in
 > `index.html`. The React source is in git history before the "static conversion" commit.
