@@ -21,9 +21,10 @@
 >   03 Bridge Expansion Joint · 04 Road Crack Repair System · 05 Civil & Structure.
 > - **Achievements** moved up to a dark band directly after About.
 > - **Client logo wall** is an auto-moving slider; **LATAR logo added** (real file from latar.com.my, 103×167 —
->   small but sharp at display size). **Bina Masyhur still has no logo** — nothing online (binamasyhur.com.my
->   serves the SELIA Group site) and the only "BM" mark in the 2026 profile deck is AI-drawn, so it stays a
->   wordmark. Ask Intan for the file.
+>   small but sharp at display size). **Bina Masyhur logo re-typeset** from the blurry wordmark on page 6 of
+>   `AKSB GLOBAL SDN BHD COMPANY PROFILE.pdf` (BINA black + MASYHUR #fa0000, Arial Bold, tight tracking) —
+>   a clean recreation of a plain text wordmark, not the client's file. Swap in the real file if one ever arrives.
+> - **Services checked against the same profile (page 3):** all five scopes and every listed item match the site.
 > - **Contact:** contact person removed everywhere; WhatsApp / mobile is now **+6011-6550 5892**
 >   (`wa.me/601165505892`). The +603-6087 5923 landline from the PDFs was kept as a second line — confirm.
 > - **Projects:** cards now carry eight different real photos and the dark tint is gone. **Intan will send the
