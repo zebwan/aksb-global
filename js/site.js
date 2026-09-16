@@ -418,6 +418,40 @@
   }
 
   /* ============================================================
+     Certifications: auto-drifting strip, drag / swipe, pause while held
+     ============================================================ */
+  var cm = $('[data-cert-marquee]');
+  if (cm) {
+    var ctrack = $('[data-cert-track]', cm), cset = $('[data-cert-set]', cm);
+    var clone = cset.cloneNode(true); clone.setAttribute('aria-hidden', 'true'); ctrack.appendChild(clone);
+    var cx0 = 0, half = 0, speed = window.innerWidth <= 600 ? 28 : 40, dragging = false, hovering = false, vel = 0, lastX = 0, lastT = 0, moved = 0, startX = 0, startOff = 0;
+    var measure = function () { half = cset.getBoundingClientRect().width; };
+    measure(); window.addEventListener('resize', measure); if (window.ResizeObserver) new ResizeObserver(measure).observe(cset);
+    var wrap = function () { if (half <= 0) return; while (cx0 <= -half) cx0 += half; while (cx0 > 0) cx0 -= half; };
+    gsap.ticker.add(function (t, dt) {
+      if (dragging) return;
+      var s = dt / 1000;
+      if (Math.abs(vel) > 8) { cx0 += vel * s; vel *= Math.pow(.05, s); }     // release inertia
+      else if (!hovering) cx0 -= speed * s;                                    // idle drift
+      wrap(); ctrack.style.transform = 'translate3d(' + cx0.toFixed(2) + 'px,0,0)';
+    });
+    cm.addEventListener('pointerdown', function (e) {
+      dragging = true; moved = 0; vel = 0; startX = e.clientX; startOff = cx0; lastX = e.clientX; lastT = performance.now();
+      cm.classList.add('is-dragging'); cm.setPointerCapture && cm.setPointerCapture(e.pointerId);
+    });
+    cm.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      var now = performance.now(), dx = e.clientX - startX; moved = Math.max(moved, Math.abs(dx));
+      cx0 = startOff + dx; wrap(); ctrack.style.transform = 'translate3d(' + cx0.toFixed(2) + 'px,0,0)';
+      var dtm = now - lastT; if (dtm > 0) vel = (e.clientX - lastX) / dtm * 1000; lastX = e.clientX; lastT = now;
+    });
+    var release = function () { if (!dragging) return; dragging = false; cm.classList.remove('is-dragging'); vel = Math.max(-1400, Math.min(1400, vel)); };
+    cm.addEventListener('pointerup', release); cm.addEventListener('pointercancel', release); cm.addEventListener('lostpointercapture', release);
+    cm.addEventListener('click', function (e) { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+    if (!isTouch) { cm.addEventListener('mouseenter', function () { hovering = true; }); cm.addEventListener('mouseleave', function () { hovering = false; }); }
+  }
+
+  /* ============================================================
      Count-ups (achievements)
      ============================================================ */
   $$('[data-countup]').forEach(function (el) {

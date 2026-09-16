@@ -868,3 +868,26 @@ strong { font-weight: 700; }
   .reviews .head { flex-wrap: wrap; }
   .cert-intro .base-heading { margin-top: 1rem; }
 }
+
+/* ---------- certifications: auto-drifting, draggable strip (no arrows) ---------- */
+.certs .head { justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; }
+.cert-hint { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .08em; font-size: 1.2rem; font-weight: 500; color: color-mix(in srgb, var(--color-grey) 50%, transparent); }
+.cert-marquee { margin-top: 7rem; overflow: hidden; cursor: grab; user-select: none; -webkit-user-select: none; touch-action: pan-y; }
+.cert-marquee.is-dragging { cursor: grabbing; }
+.cert-track { display: flex; width: max-content; will-change: transform; }
+.cert-set { display: flex; gap: 3rem; padding: 0 1.5rem; }
+.cert-card { width: 30rem; flex: none; display: block; color: inherit; -webkit-user-drag: none; }
+.cert-frame { display: block; aspect-ratio: 4 / 5; overflow: hidden; background: #fff; box-shadow: 0 1.6rem 4rem rgba(7, 18, 38, .14); transition: transform .6s var(--ease-out-quart), box-shadow .6s var(--ease-out-quart); }
+.cert-frame img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.cert-card:hover .cert-frame { transform: translateY(-.4rem); box-shadow: 0 2.4rem 5rem rgba(7, 18, 38, .2); }
+.cert-issuer { display: block; margin-top: 2.4rem; font-size: 2rem; line-height: 1.2; }
+.cert-name { display: block; margin-top: .4rem; font-size: 1.6rem; line-height: 1.3; color: color-mix(in srgb, var(--color-grey) 75%, transparent); }
+.cert-detail { display: block; margin-top: 1rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .08em; font-size: 1.1rem; font-weight: 500; line-height: 1.5; color: color-mix(in srgb, var(--color-grey) 55%, transparent); }
+@media (width <= 600px) {
+  .cert-marquee { margin-top: 4rem; }
+  .cert-set { gap: 2rem; padding: 0 1rem; }
+  .cert-card { width: 24rem; }
+  .cert-issuer { font-size: 1.8rem; margin-top: 1.8rem; }
+  .cert-name { font-size: 1.5rem; }
+  .cert-hint { font-size: 1.1rem; }
+}
