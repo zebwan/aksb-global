@@ -418,6 +418,18 @@
   }
 
   /* ============================================================
+     Photo collage: each block drifts at its own speed across the section
+     ============================================================ */
+  var collage = $('[data-collage]');
+  if (collage) {
+    var mobileK = window.innerWidth <= 600 ? .4 : 1;
+    $$('.block', collage).forEach(function (block) {
+      var t = parseFloat(block.getAttribute('data-parallax') || '0') * (window.innerWidth / 1600) * mobileK;
+      gsap.fromTo(block, { y: -t }, { y: t, ease: 'none', scrollTrigger: { trigger: collage, start: 'top bottom', end: 'bottom top', scrub: true } });
+    });
+  }
+
+  /* ============================================================
      Certifications: auto-drifting strip, drag / swipe, pause while held
      ============================================================ */
   var cm = $('[data-cert-marquee]');
