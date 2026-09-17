@@ -941,3 +941,4 @@ strong { font-weight: 700; }
 @media (width <= 600px) { .gallery { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
 /* footer + menu contact lists: hard single column */
 .footer-sub, .menu-sub { column-count: 1 !important; columns: auto 1 !important; }
+.quote-panel { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
