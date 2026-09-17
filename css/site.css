@@ -925,3 +925,9 @@ strong { font-weight: 700; }
   .collage-cap { font-size: 1rem; white-space: normal; }
 }
 .footer-credit { font-size: 1.2rem; opacity: .55; }
+/* footer contact list: single column (email overlapped the phone numbers) */
+.footer-sub { column-count: 1; }
+.footer-sub li { margin: .4rem 0; }
+.menu-sub { column-count: 1; }
+.menu-sub .menu-mask:nth-child(3) { break-after: auto; }
+.menu-sub .menu-mask { margin: .4rem 0; }
