@@ -931,3 +931,13 @@ strong { font-weight: 700; }
 .menu-sub { column-count: 1; }
 .menu-sub .menu-mask:nth-child(3) { break-after: auto; }
 .menu-sub .menu-mask { margin: .4rem 0; }
+
+/* ---------- scope panel galleries (all client photos, per scope) ---------- */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.gal-item { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #dfe5ee; }
+.gal-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s var(--ease-out-quart); }
+.gal-item:hover img { transform: scale(1.05); }
+.gal-count { display: inline-block; margin-left: .8rem; font-family: var(--font-mono); font-size: 1.1rem; letter-spacing: .08em; color: color-mix(in srgb, var(--color-grey) 50%, transparent); vertical-align: middle; }
+@media (width <= 600px) { .gallery { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+/* footer + menu contact lists: hard single column */
+.footer-sub, .menu-sub { column-count: 1 !important; columns: auto 1 !important; }
