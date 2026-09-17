@@ -934,3 +934,5 @@ strong { font-weight: 700; }
   .collage .block { padding-bottom: 4rem; }
   .collage .block .base-image, .collage .block .tint { bottom: 4rem; }
 }
+.collage .block .base-image { height: calc(100% - 3rem); }
+@media (width <= 600px) { .collage .block .base-image { height: calc(100% - 4rem); } }
