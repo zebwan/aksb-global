@@ -891,3 +891,6 @@ strong { font-weight: 700; }
   .cert-name { font-size: 1.5rem; }
   .cert-hint { font-size: 1.1rem; }
 }
+
+/* project rows: hover thumbnails removed (client request, 17 Sep 2026) */
+.project .image { display: none !important; }
