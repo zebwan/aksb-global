@@ -131,7 +131,7 @@
       .fromTo(logo, { x: '11.3rem' }, { x: 0 }, 1)
       .fromTo(burger, { autoAlpha: 0 }, { autoAlpha: 1, duration: .6 }, 1.2);
     pageHeader.style.visibility = 'visible';
-    gsap.fromTo(pageHeader, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.5, ease: 'power3.out' });
+    gsap.fromTo(pageHeader, { y: -14 }, { y: 0, duration: 1.4, ease: 'power3.out' });
   }
 
   function introDone() {
@@ -161,6 +161,7 @@
       .to(intro, { autoAlpha: 0, duration: 1, ease: 'power2.inOut' }, 2.8)
       .add(function () { hero.classList.add('is-loaded'); lineReveal(heroHeading, 0, true); }, 2.9)
       .add(buildHeader, 3.1);
+    tl.timeScale(1.6);
   }
 
   /* ============================================================
@@ -515,15 +516,37 @@
       .fromTo($('[data-footer-wordmark]'), { backgroundPosition: '0% 50%' }, { backgroundPosition: '80% 50%', duration: 1 }, 0);
   }
 
+  /* ---------- deferred images (lower sections load as they approach) ---------- */
+  var loadDeferred = function (sec) {
+    $$('img[data-src]', sec).forEach(function (img) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); });
+    sec.classList.add('is-in');
+  };
+  if ('IntersectionObserver' in window) {
+    var deferIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { loadDeferred(e.target); deferIO.unobserve(e.target); } });
+    }, { rootMargin: '1000px 0px' });
+    $$('[data-defer]').forEach(function (sec) { deferIO.observe(sec); });
+  } else { $$('[data-defer]').forEach(loadDeferred); }
+
   /* ---------- year ---------- */
   var y = $('[data-year]'); if (y) y.textContent = new Date().getFullYear();
 
   /* ============================================================
      Boot
      ============================================================ */
+  function skipIntro() {
+    intro.style.display = 'none';
+    hero.classList.add('is-loaded');
+    lineReveal($('.base-heading', hero), .15, true);
+    buildHeader();
+    introDone();
+  }
   function boot() {
     setupText();
     ScrollTrigger.refresh();
+    var seen = document.documentElement.classList.contains('intro-seen');
+    try { sessionStorage.setItem('aksb-intro', '1'); } catch (e) {}
+    if (seen && !reduced) { skipIntro(); return; }
     if (reduced) {
       intro.style.display = 'none'; hero.classList.add('is-loaded');
       $$('[data-split]').forEach(function (el) { el.classList.add('is-split'); });
@@ -533,6 +556,8 @@
     }
     runIntro();
   }
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(boot); else boot();
+  var booted = false, bootOnce = function () { if (!booted) { booted = true; boot(); } };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(bootOnce); else bootOnce();
+  setTimeout(bootOnce, 800);
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
 })();
